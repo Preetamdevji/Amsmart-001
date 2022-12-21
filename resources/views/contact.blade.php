@@ -39,18 +39,40 @@
 
 <section class="contact">
 
-    <form action="">
+    <form action="/admin/contact" method="post">
+        @csrf
         <h3>get in touch</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident nihil non unde, quia magnam quibusdam ad obcaecati nam animi?</p>
-        <div class="inputBox">
-            <input type="text" placeholder="your name">
-            <input type="email" placeholder="your email">
+        <div class="inputBox">  
+            <input name="name" id="name" type="text" value="{{old('name')}}" placeholder="your name">
+            <input name="email" id="email" value="{{old('email')}}" type="email" placeholder="your email">
+            @error('name')
+                <span class="alert alert-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            @error('email')
+                <span class="alert alert-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
+
         <div class="inputBox">
-            <input type="number" placeholder="your number">
-            <input type="text" placeholder="subject">
+            <input name="number" id="number" value="{{old('number')}}" type="number" placeholder="your number">
+            <input name="subject" id="subject" value="{{old('subject')}}" type="text" placeholder="subject">
+            @error('number')
+                <span class="alert alert-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            @error('subject')
+                <span class="alert alert-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
-        <textarea name="" placeholder="your message" id="" cols="30" rows="10"></textarea>
+        <textarea name="message" id="message" placeholder="your message" id="" cols="30" rows="10">{{old('message')}}</textarea>
         <input type="submit" value="send message" class="btn">
     </form>
 
