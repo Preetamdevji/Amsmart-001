@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><title>@yield('page-title') | AmSmart</title></title>
+  <title>@yield('page-title') | AmSmart</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="/assets/admin/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -86,9 +86,18 @@
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
+
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
                 </div>
+
               </li>
             </ul>
           </li>
@@ -183,6 +192,19 @@
                 </ul>
             </li>
 
+            <li class="{{ Request::is('admin/contact/create') || Request::is('admin/contact') ? 'active' : null }} treeview">
+                <a href="#">
+                    <i class="fa fa-phone"></i> <span>Contact</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ Request::is('admin/contact/create') ? 'active' : null }}"><a href="/admin/contact/create"><i class="fa fa-circle-o"></i> Add Contact </a></li>
+                    <li class="{{ Request::is('admin/contact') ? 'active' : null }}"><a href="/admin/contact"><i class="fa fa-circle-o"></i> View Contacts </a></li>
+                </ul>
+            </li>
+
              <li class="treeview">
                 <a href="#">
                     <i class="fa fa-bars"></i> <span>Settings</span>
@@ -192,7 +214,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ Request::is('admin/home_slider') ? 'active' : null }}"><a href="/admin/home_slider"><i class="fa fa-circle-o"></i> Home Slider </a></li>
-                    <li class="{{ Request::is('admin/home_banner') ? 'active' : null }}"><a href="/admin/home_banner"><i class="fa fa-circle-o"></i> Home Banner </a></li>
+                    <li class="{{ Request::is('admin/deal_banner') ? 'active' : null }}"><a href="/admin/deal_banner"><i class="fa fa-circle-o"></i> Deal Banner </a></li>
                 </ul>
             </li>
         </ul>
@@ -205,11 +227,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>@yield('page-title')</h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Simple</li>
-      </ol>
+
     </section>
 
     <!-- Main content -->
@@ -218,7 +236,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2019-2020 <a href="https://www.alfateemacademy.com/" target="_blank">Al-Fateem Academy</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022-2023 <a href="https://www.alfateemacademy.com/" target="_blank">Am-Smart</a>.</strong> All rights reserved.
   </footer>
  
  
@@ -233,6 +251,7 @@
 <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 @stack('scripts')
 
