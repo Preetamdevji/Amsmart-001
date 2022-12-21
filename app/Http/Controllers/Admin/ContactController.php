@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Contact;
+
 class ContactController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('admin/contact/index');
+        $contacts = Contact::get();
+        return view('admin/contact/index', compact('contacts'));
     }
 
     /**
@@ -35,7 +38,22 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'subject' => 'required',
+        ]);
+
+        Contact::create([
+            'name' => request()->get('name'),
+            'email' => request()->get('email'),
+            'number' => request()->get('number'),
+            'subject' => request()->get('subject'),
+            'message' => request()->get('message')
+        ]);
+
+        return redirect()->to('/admin/contact');
     }
 
     /**
@@ -57,7 +75,8 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::find($id);
+        return view('admin/contact/edit', compact('contact'));
     }
 
     /**
@@ -69,7 +88,22 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'subject' => 'required',
+        ]);
+        $contacts = Contact::find($id);
+        $contacts->update([
+            'name' => request()->get('name'),
+            'email' => request()->get('email'),
+            'number' => request()->get('number'),
+            'subject' => request()->get('subject'),
+            'message' => request()->get('message')
+        ]);
+
+        return redirect()->to('/admin/contact');
     }
 
     /**
@@ -80,6 +114,8 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contacts = Contact::find($id);
+        $contacts->delete();
+        return redirect()->back();
     }
 }
