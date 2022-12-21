@@ -41,7 +41,7 @@ class ContactController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'number' => 'required',
+            'number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'subject' => 'required',
         ]);
 
@@ -53,7 +53,7 @@ class ContactController extends Controller
             'message' => request()->get('message')
         ]);
 
-        return redirect()->to('/admin/contact');
+        return redirect()->to('/contact');
     }
 
     /**

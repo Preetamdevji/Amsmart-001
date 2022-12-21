@@ -24,7 +24,7 @@
  
                     <div class="form-group @error('email') has-error @enderror">
                     <label for="email">Email <span class="text text-red">*</span></label>
-                      <input type="text" name="email" class="form-control" id="email" placeholder="Email">
+                      <input type="email" name="email" class="form-control" id="email" placeholder="Email">
                     </div>
 
                     <div class="form-group @error('number') has-error @enderror">
