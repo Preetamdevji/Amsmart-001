@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\models\home_slider;
+use App\models\Banner_Section;
 use Illuminate\Support\Facades\file;
 
 
 
-class HomeSliderController extends Controller
+class BannerSectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,9 @@ class HomeSliderController extends Controller
      */
     public function index()
     {
-
-        $home_slider = home_slider::all();
-		$data = compact('home_slider');
-        return view('admin/home_slider/index')->with($data);
+        $Banner_Section = Banner_Section::all();
+		$data = compact('Banner_Section');
+        return view('admin/banner_section/index')->with($data);
     }
 
     /**
@@ -31,7 +30,9 @@ class HomeSliderController extends Controller
      */
     public function create()
     {
-        return view('admin/home_slider/create');
+
+     return view('admin/banner_section/create');
+    
     }
 
     /**
@@ -42,7 +43,6 @@ class HomeSliderController extends Controller
      */
     public function store(Request $request)
     {
-        
         $request->validate([
 		
 			'top_title' => 'required',
@@ -53,12 +53,12 @@ class HomeSliderController extends Controller
 			'status' => 'required',
 		]);
 
-        $home_slider = new home_slider();
-		$home_slider->top_title = $request['top_title'];
-		$home_slider->title = $request['title'];
-		$home_slider->flag = $request['flag'];
-        $home_slider->button = $request['button'];
-		$home_slider->status = $request['status'];
+        $Banner_Section = new Banner_Section();
+		$Banner_Section->top_title = $request['top_title'];
+		$Banner_Section->title = $request['title'];
+		$Banner_Section->flag = $request['flag'];
+        $Banner_Section->button = $request['button'];
+		$Banner_Section->status = $request['status'];
 
         if($request->hasfile('slider_image'))
 		{
@@ -67,14 +67,12 @@ class HomeSliderController extends Controller
 		  $extension = $file->getClientOriginalExtension();
 		  $filename = time().'.'.$extension;
 		  $file->move('uploads/', $filename);
-		  $home_slider->slider_image = $filename;
+		  $Banner_Section->slider_image = $filename;
 
 		}
 
-		$home_slider->save();
-		return redirect()->to('admin/home_slider');
-
-
+		$Banner_Section->save();
+		return redirect()->to('admin/banner_section');
     }
 
     /**
@@ -96,10 +94,10 @@ class HomeSliderController extends Controller
      */
     public function edit($id)
     {
-        $home_slider = home_slider::find($id);
-		$data = compact('home_slider');
+        $Banner_Section = Banner_Section::find($id);
+		$data = compact('Banner_Section');
 
-        return view('admin/home_slider/edit')->with($data);
+        return view('admin/Banner_Section/edit')->with($data);
     }
 
     /**
@@ -111,15 +109,30 @@ class HomeSliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $home_slider = home_slider::find($id);
-        $home_slider->top_title = $request['top_title'];
-		$home_slider->title = $request['title'];
-        $home_slider->flag = $request['flag'];
-		$home_slider->status = $request['status'];
+        $request->validate([
+		
+			'top_title' => 'required',
+			'title' => 'required',
+			'flag' => 'required',
+            'button' => 'required',
+
+			'status' => 'required',
+		]);
+
+
+
+
+
+
+        $Banner_Section = Banner_Section::find($id);
+        $Banner_Section->top_title = $request['top_title'];
+		$Banner_Section->title = $request['title'];
+        $Banner_Section->flag = $request['flag'];
+		$Banner_Section->status = $request['status'];
 
         if($request->hasfile('slider_image'))
 		{
-          $destination = 'uploads/'.$home_slider->slider_image;
+          $destination = 'uploads/'.$Banner_Section->slider_image;
 		  if(file::exists($destination)){
 
                file::delete($destination);
@@ -129,12 +142,12 @@ class HomeSliderController extends Controller
 		  $extension = $file->getClientOriginalExtension();
 		  $filename = time().'.'.$extension;
 		  $file->move('uploads/', $filename);
-		  $home_slider->slider_image = $filename;
+		  $Banner_Section->slider_image = $filename;
 
 		}
 
-        $home_slider->save();
-        return redirect()->to('admin/home_slider');
+        $Banner_Section->save();
+        return redirect()->to('admin/banner_section');
     }
 
     /**
@@ -145,8 +158,8 @@ class HomeSliderController extends Controller
      */
     public function destroy($id)
     {
-        $home_slider = home_slider::find($id);
-		$home_slider->delete();
+        $Banner_Section = Banner_Section::find($id);
+		$Banner_Section->delete();
 		return redirect()->back();
     }
 }

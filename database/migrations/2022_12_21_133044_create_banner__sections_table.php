@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHomeSlidersTable extends Migration
+class CreateBannerSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHomeSlidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('home__sliders', function (Blueprint $table) {
+        Schema::create('banner__sections', function (Blueprint $table) {
             $table->id();
             $table->string('top_title',30);
             $table->string('title',30);
@@ -32,6 +32,6 @@ class CreateHomeSlidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home__sliders');
+        Schema::dropIfExists('banner__sections');
     }
 }

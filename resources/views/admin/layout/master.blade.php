@@ -187,8 +187,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/cms/create') ? 'active' : null }}"><a href="/admin/cms/create"><i class="fa fa-circle-o"></i> Add CMS Pages </a></li>
-                    <li class="{{ Request::is('admin/cms') ? 'active' : null }}"><a href="/admin/cms"><i class="fa fa-circle-o"></i> View CMS Pages </a></li>
+                    <li class="{{ Request::is('admin/cms_pages/create') ? 'active' : null }}"><a href="/admin/cms_pages/create"><i class="fa fa-circle-o"></i> Add CMS Pages </a></li>
+                    <li class="{{ Request::is('admin/cms_pages') ? 'active' : null }}"><a href="/admin/cms_pages"><i class="fa fa-circle-o"></i> View CMS Pages </a></li>
                 </ul>
             </li>
 

@@ -1,79 +1,89 @@
-@extends('admin/layout/master')
+@extends('admin/layout/master')     
 @section('page-title')
-  Manage CMS Pages
+  Manage Cms                       
 @endsection
-@section('content')
+@section('main-content')
+
     <!-- Main content -->
     <section class="content">
       
       <!-- /.row -->
-     <div class="box">
+      <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">
-                    <a href="/admin/cms_pages/create" data-toggle="tooltip" title="Insert Record" class="btn btn-primary btn-xm"><i class="fa fa-plus"></i></a>
-              </h3>
               
+            <h3 class="box-title">     
+            <a href="cms_pages/create" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+            </h3>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="homebannerTable" class="table table-bordered">
+              <table id="usertable" class="table table-bordered">
                 <thead style="background-color: #F8F8F8;">
                   <tr>
-                    <th width="4%"><input type="checkbox" name="" id="checkAll"></th>
-                    <th width="20%">Top Title</th>
-                    <th width="20%">Title</th>
-                    <th width="20%">Flag</th>
-                    <th width="20%">Status</th>
-                    <th width="10%">Manage</th>
-                  </tr>
+                  <th width="4%"><input type="checkbox" name="" id="checkAll"></th>
+                    <th width="25%">top_title</th>
+                    <th width="15%">title</th>
+                    <th width="20%">body</th>
+                    <th width="20%">flag</th>
+                    <th width="20%">user Image</th>
+                    <th width="10%">Status</th>
+                    <th width="10%">Action</th>
+
+              </tr>
                 </thead>
-                @forelse($CMSPages as $page)
-                <tr>
-                  <td><input type="checkbox" name="" id="" class="checkSingle"></td>
-                  <td>{{ $page->top_title }}</td>
-                  <td>{{ $page->title }}</td>
-                  <td>{{ $page->flag }}</td>
-                  
-                  <td>
-                    <input data-id="{{$page->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $page->status ? 'checked' : '' }}>
-                  </td>
-                  <td>
-                      <a href="/admin/cms_pages/{{ $page->id }}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
-   
-                      <form method="post" action="/admin/cms_pages/{{ $page->id }}">
+
+                    @foreach($cms as $item)
+
+                    <td><input type="checkbox" name="" id="" class="checkSingle"></td>
+
+                    <td>{{$item->top_title}}</td>
+                    <td>{{$item->title}}</td>
+                    <td>{{$item->body}}</td>
+                    <td>{{$item->flag}}</td>
+                    <td><img src="{{asset('uploads/'.$item->img)}}" height="25" width="25" class="rounded-circle"></td>
+                    <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $item->status ? 'checked' : '' }}></td>
+
+                    <td><a href="/admin/cms_pages/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                    
+                    <form action="{{url('/')}}/admin/cms_pages/{{$item->id}}" method="post">
+                      @method('DELETE')
                       @csrf
-                      @method('delete')
-                      <button onclick="return confirm('Are you Sure, You Want To Delete this?')" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
-                    </form>
-              
-                  </td>
+                      <button onclick="return confirm('Are you sure do you want to delete');" data-toggle="tooltip" title="trash" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
+                  
+                    </form> 
+
+
+                   </td>
                 </tr>
-                @empty
-                  <div class="alert alert-danger">No Record Found!</div>
-                @endforelse
-            </table>
+
+                  @endforeach
+               
+              </table>
             </div>
             <!-- /.box-body -->
-          </div>
+          
             <!-- /.box-body -->
           </div>
+
+
+
     </section>
-    
 @endsection
 
 @push('scripts')
 <script>
     $(document).ready( function () {
-    $('#homebannerTable').DataTable();
+    $('#usertable').DataTable();
 });
- $('.toggle-class').change(function() { 
+    $('.toggle-class').change(function() { 
            var status = $(this).prop('checked') == true ? 1 : 0;  
-           var cmspages_id = $(this).data('id');  
+           var brand_id = $(this).data('id');  
            $.ajax({ 
                type: "GET", 
                dataType: "json", 
-               url: "{{route('update_cms_pages_status')}}", 
-               data: {'status': status, 'cmspages_id': cmspages_id}, 
+               url: "{{route('update_user_status')}}", 
+               data: {'status': status, 'brand_id': brand_id}, 
                success: function(data){ 
                   Swal.fire(
                     'Status Update!',
