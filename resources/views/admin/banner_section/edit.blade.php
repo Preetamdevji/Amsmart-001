@@ -32,11 +32,20 @@
                       <input type="text" value="{{$Banner_Section->title}}" name="title" class="form-control" id="designation" placeholder="designation">
                     </div>
 
-              
-                    <div class="form-group @error('flag') has-error @enderror">
-                    <label for="body">Flag <span class="text text-red">*</span></label>
-                      <input type="text" value="{{$Banner_Section->flag}}" name="flag" class="form-control" id="flag" placeholder="flag">
-                    </div>
+
+                    <div class="row gx-1"> 
+                <div class="col-md-4 col-sm-8">
+                 <div class="form-group @error('flag') has-error @enderror">
+                    <label for="title">Flag<span class="text text-red">*</span></label>
+                    <select class="form-control select2" value="{{$Banner_Section->flag}}" name="flag" id="flag" style="width: 100%;">
+                      <option value="none"> -- Select Flag -- </option>
+                      <option value="">home_slider</option>
+                      <option value="">home_banner</option>
+                      <option value="">deal_banner</option>
+                    </select>
+                  </div>
+                </div> 
+              </div>
 
         
 

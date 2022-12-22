@@ -11,7 +11,7 @@
      <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-                    <a class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+                    <a href="/admin/brand/create" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
               </h3>
             </div>
             <!-- /.box-header -->
@@ -19,29 +19,35 @@
               <table id="brandTable" class="table table-bordered">
                 <thead style="background-color: #F8F8F8;">
                   <tr>
-                    <th width="4%"><input type="checkbox" name="" id="checkAll"></th>
-                    <th width="25%">Title</th>
-                    <th width="15%">Author</th>
-                    <th width="15%">Category</th>
-                    <th width="20%">Book Image</th>
-                    <th width="10%">Status</th>
-                    <th width="10%">Manage</th>
+                    <th><input type="checkbox" name="" id="checkAll"></th>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  
                   </tr>
                 </thead>
                 @forelse($brands as $brand)
                 <tr>
                   <td><input type="checkbox" name="" id="" class="checkSingle"></td>
-                  <td>Title</td>
-                  <td>Designation</td>
-                  <td>Image</td>
-                  <td>Image</td>
+                  <td>{{$brand->title}}</td>
+                  <td>{{$brand->slug}}</td>
+                  <td>{{$brand->description}}</td>
+                  
                   <td>
                     <input data-id="{{$brand->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $brand->status ? 'checked' : '' }}>
                   </td>
                   <td>
-                      <a href="#" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                      <a href="/admin/brand/{{$brand->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                     
+                      <form action="/admin/brand/{{$brand->id}}" method="post">
+                        @csrf
+                        @method('delete')
                       <button class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
-                  </td>
+                      </form>
+                    </td>
+
                 </tr>
                 @empty
                   <div class="alert alert-danger">No record found!</div>

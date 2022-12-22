@@ -200,7 +200,6 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/contact/create') ? 'active' : null }}"><a href="/admin/contact/create"><i class="fa fa-circle-o"></i> Add Contact </a></li>
                     <li class="{{ Request::is('admin/contact') ? 'active' : null }}"><a href="/admin/contact"><i class="fa fa-circle-o"></i> View Contacts </a></li>
                 </ul>
             </li>
@@ -213,8 +212,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/home_slider') ? 'active' : null }}"><a href="/admin/home_slider"><i class="fa fa-circle-o"></i> Home Slider </a></li>
-                    <li class="{{ Request::is('admin/deal_banner') ? 'active' : null }}"><a href="/admin/deal_banner"><i class="fa fa-circle-o"></i> Deal Banner </a></li>
+                    <li class="{{ Request::is('admin/banner_section') ? 'active' : null }}"><a href="/admin/banner_section"><i class="fa fa-circle-o"></i> Banner Section </a></li>
+                    
                 </ul>
             </li>
         </ul>

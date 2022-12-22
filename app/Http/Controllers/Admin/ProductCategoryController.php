@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product_Category;
 
 class ProductCategoryController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin/product_category/index');
+        $Product_category = Product_Category::get();
+        return view('admin/product_category/index',compact('Product_category'));
     }
 
     /**
@@ -35,7 +37,25 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required'
+    
+           ]);
+           
+           
+           Product_Category::create([
+              
+                'title' => request()->get('title'),
+                'slug' => request()->get('slug'),
+                'description' => request()->get('description'),
+                'status' => request()->get('status'),
+               
+                
+            ]);
+            
+            return redirect()->to('/admin/product_category');
+    
     }
 
     /**
@@ -57,7 +77,8 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Product_Category::find($id);
+        return view('admin/product_category/edit',compact('category'));
     }
 
     /**
@@ -69,7 +90,25 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+		
+			'title' => 'required',
+			'slug' => 'required',
+			'description' => 'required',
+            'status' => 'required',
+		]);
+
+
+        $category = Product_Category::find($id);
+        $category->title = $request['title'];
+        $category->slug = $request['slug'];
+        $category->description = $request['description'];
+        $category->status = $request['status'];
+
+        $category->save();
+
+		return redirect('/admin/product_category');
+        
     }
 
     /**
@@ -80,6 +119,18 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Product_Category::find($id);
+
+        $category->delete();
+        
+        return redirect()->back();
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $category = Product_Category::find($request->category_id); 
+        $category->status = $request->status; 
+        $category->save(); 
+        return response()->json(['Success'=>'Status change successfully.']); 
     }
 }

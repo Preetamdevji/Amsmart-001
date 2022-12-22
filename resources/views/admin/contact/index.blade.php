@@ -11,7 +11,7 @@
      <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-                    <a href="/admin/contact/create" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+                    <a href="/contact" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
               </h3>
             </div>
             <!-- /.box-header -->
@@ -49,7 +49,6 @@
                   <div class="alert alert-danger">No record found!</div>
                 @endforelse
             </table>
-            </div>
             <!-- /.box-body -->
 
           </div>

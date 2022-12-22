@@ -40,16 +40,20 @@
               <div class="row gx-1"> 
                 <div class="col-md-4 col-sm-8">
                  <div class="form-group @error('flag') has-error @enderror">
-                    <label for="title">flag<span class="text text-red">*</span></label>
-                      <textarea class="form-control" name="flag" value="{{ old('flag')}}" rows="4" id="flag" placeholder="Description"></textarea>
+                    <label for="title">Flag<span class="text text-red">*</span></label>
+                    <select class="form-control select2" value="{{old('flag')}}" name="flag" id="flag" style="width: 100%;">
+                      <option value="none"> -- Select Flag -- </option>
+                      <option value="">home_slider</option>
+                      <option value="">home_banner</option>
+                      <option value="">deal_banner</option>
+                    </select>
                   </div>
                 </div> 
               </div>
-
     
               <div class="row gx-1"> 
                 <div class="col-md-4 col-sm-8">
-                 <div class="form-group @error('slider_image') has-error @enderror">
+                 <div class="form-group">
                     <label for="title">Button</label>
                       <input type="text" name="button" value="{{old('button')}}" class="form-control" id="button" placeholder="Write button name here...">
                   </div>

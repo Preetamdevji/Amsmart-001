@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-  Add Product Category                        
+  Edit Product Category                        
 @endsection
 @section('main-content')
 
@@ -16,21 +16,22 @@
           <div class="row"> 
                 <div class="col-xs-6">
                   
-                <form action="/admin/product_category" method="post">
+                <form action="/admin/product_category/{{$category->id}}" method="post">
                   @csrf
-                 <div class="form-group @error('title') has-error @enderror">
+                  @method ('put')
+                 <div class="form-group">
                     <label for="title">Title <span class="text text-red">*</span></label>
-                      <input type="text" name="title" value="{{old('title')}}" class="form-control" id="title" placeholder="Title">
+                      <input type="text" name="title" value="{{$category->title}}"  class="form-control" id="title" placeholder="Title">
                     </div>
  
-                    <div class="form-group @error('slug') has-error @enderror">
+                    <div class="form-group">
                     <label for="slug">Slug <span class="text text-red">*</span></label>
-                      <input type="text" name="slug" value="{{old('slug')}}" class="form-control" id="slug" placeholder="Slug">
+                      <input type="text" name="slug" value="{{$category->slug}}" class="form-control" id="slug" placeholder="Slug">
                     </div>
                    
                     <div class="form-group">
                       <label for="description">Description <span class="text text-red">*</span></label>
-                      <textarea class="form-control" name="description" value="{{old('description')}}" rows="5" id="description" placeholder="Description"></textarea>
+                      <textarea class="form-control" name="description" rows="5" id="description" placeholder="Description">{{$category->description}}</textarea>
                     </div>
                 
                     <div class="row gx-3">
@@ -39,11 +40,11 @@
   											<label class="form-label">Status</label>
   											<div class="form-check">
   												<div class="d-inline-block">
-  													<input name="status" value="1" type="radio" id="crYes" checked class="form-check-input" >
+  													<input name="status" value="1" type="radio" id="crYes" checked class="form-check-input" {{ $category->status ? 'checked' : '' }}>
   													<label class="form-check-label" for="crYes">Yes</label>
   												</div>
   												<div class="d-inline-block mx-5">
-  													<input name="status" value="0" type="radio" id="crNo" class="form-check-input">
+  													<input name="status" value="0" type="radio" id="crNo" class="form-check-input" {{ $category->status ? 'checked' : '' }}>
   													<label class="form-check-label" for="crNo">No</label>
                           </div>
   											</div>
