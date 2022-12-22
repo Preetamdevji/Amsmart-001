@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CmsController;
-use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\MainController;
 use App\Http\Controllers\Admin\BannerSectionController;
@@ -38,9 +37,6 @@ use App\Http\Controllers\Admin\BannerSectionController;
 		Route::resource('product_category', 'App\Http\Controllers\Admin\ProductCategoryController');
 		Route::resource('contact', 'App\Http\Controllers\Admin\ContactController');
 		Route::resource('cms_pages', 'App\Http\Controllers\Admin\CMSController');
-		Route::resource('home_slider', 'App\Http\Controllers\Admin\HomeSliderController');
-		Route::resource('deal_banner', 'App\Http\Controllers\Admin\DealBannerController');
-		// Route::resource('home_slider', 'App\Http\Controllers\Admin\HomeSliderController');
 		Route::resource('banner_section', 'App\Http\Controllers\Admin\BannerSectionController');
 
 
@@ -54,11 +50,9 @@ Route::get('/about', [MainController::class, 'about']);
 Route::get('/', [MainController::class, 'index']);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// Auth::routes();
+Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
