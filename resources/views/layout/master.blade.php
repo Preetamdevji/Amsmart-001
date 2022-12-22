@@ -24,10 +24,16 @@
 
     <a href="/" class="logo"> <i class="fas fa-store"></i> AmSmart </a>
 
-    <form action="" class="search-form">
+    <!-- <form action="" class="search-form">
         <input type="search" id="search-box" placeholder="search here...">
         <label for="search-box" class="fas fa-search"></label>
-    </form>
+    </form> -->
+
+    <form class="search-form" action="{{ Route('search') }}" method="GET">
+    <input value="" name="search" type="search" id="search-box" placeholder="search here...">
+    <button for="search-box" class="fas fa-search"></button>	
+    						
+	</form>
 
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>

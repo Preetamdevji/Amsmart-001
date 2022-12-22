@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Banner_Section;
 
 
+use App\models\Product;
+
 class MainController extends Controller
 {
     public function index()
@@ -24,8 +26,21 @@ class MainController extends Controller
 
     public function product()
     {
+
+        $search = $request['search'] ?? "";
+
+        if($search != ""){
+            $products = Product::where('product_name', '=', $search)->get();
+        }
+        else{
+            $products = Product::with('product_name')->where('status', 1)->get(); 
+        }
+    	return view('products', compact('products', 'search'));
+        
+
         $DealBanner = Banner_Section::where('flag', 'deal_banner')->where('status', 1)->get();
     	return view('products', compact('DealBanner'));
+
     }
 
     public function contact()

@@ -61,11 +61,11 @@ class BannerSectionController extends Controller
         if($request->hasfile('slider_image'))
 		{
     
-		  $file = $request->file('slider_image');
-		  $extension = $file->getClientOriginalExtension();
-		  $filename = time().'.'.$extension;
-		  $file->move('uploads/', $filename);
-		  $Banner_Section->slider_image = $filename;
+		$file = $request->file('slider_image');
+		$extension = $file->getClientOriginalExtension();
+		$filename = time().'.'.$extension;
+		$file->move('uploads/', $filename);
+		$Banner_Section->slider_image = $filename;
 
 		}
 
@@ -113,11 +113,6 @@ class BannerSectionController extends Controller
 			'title' => 'required',
 			'flag' => 'required',
 		]);
-
-
-
-
-
 
         $Banner_Section = Banner_Section::find($id);
         $Banner_Section->top_title = $request['top_title'];

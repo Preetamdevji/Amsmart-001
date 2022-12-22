@@ -48,6 +48,7 @@ Route::get('/products', [MainController::class, 'product']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/', [MainController::class, 'index']);
+Route::get('/search',[MainController::class, 'product'])->name('search');
 
 
 
