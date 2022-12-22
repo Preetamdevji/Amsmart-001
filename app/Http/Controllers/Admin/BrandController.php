@@ -24,7 +24,9 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   
+
+       public function create()
     {
         return view('admin/brand/create');
     }
@@ -37,7 +39,31 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+  
+       $this->validate($request, [
+        'title' => 'required',
+        'slug' => 'required'
+
+       ]);
+       
+       
+        Brand::create([
+          
+            'title' => request()->get('title'),
+            'slug' => request()->get('slug'),
+            'description' => request()->get('description'),
+            'status' => request()->get('status'),
+           
+            
+        ]);
+        
+        
+        // return redirect('admin/brand/index')
+
+        return redirect()->to('/admin/brand');
+
+       
     }
 
     /**
@@ -59,7 +85,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::find($id);
+        return view('admin/brand/edit',compact('brand'));
     }
 
     /**
@@ -71,8 +98,28 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+		
+			'title' => 'required',
+			'slug' => 'required',
+			'description' => 'required',
+            'status' => 'required',
+		]);
+
+		
+
+		$brand = Brand::find($id);
+		$brand->title = $request['title'];
+		$brand->slug = $request['slug'];
+	    $brand->description = $request['description'];
+		$brand->status = $request['status'];
+
+		$brand->save();
+
+		return redirect('/admin/brand');
+
+	}
+    
 
     /**
      * Remove the specified resource from storage.
@@ -80,9 +127,15 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
-        //
+        
+        $brand = Brand::find($id);
+        
+		$brand->delete();
+        
+        return redirect()->back();
     }
 
     public function updateStatus(Request $request)

@@ -24,8 +24,12 @@ use App\Http\Controllers\Admin\BannerSectionController;
 */
 	Route::group(['prefix' => 'admin'], function() {
 		Route::get('/status/update/brand', [BrandController::class, 'updateStatus'])->name('update_brand_status');
+
+		Route::get('/status/update/product_category', [ProductCategoryController::class, 'updateStatus'])->name('update_Product_cat_status');
+
 		Route::resource('dashboard', 'App\Http\Controllers\Admin\DashboardController');
 		Route::get('/status/user/brand', [BrandController::class, 'updateStatus'])->name('update_user_status');
+
 
 		Route::resource('user', 'App\Http\Controllers\Admin\UserController');
 		Route::resource('product', 'App\Http\Controllers\Admin\ProductController');
@@ -46,7 +50,9 @@ Route::get('/about', [MainController::class, 'about']);
 Route::get('/', [MainController::class, 'index']);
 
 
+
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
