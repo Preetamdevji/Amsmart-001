@@ -290,24 +290,18 @@
     <h1 class="heading"> <span>deal</span> of the day </h1>
 
     <div class="box-container">
-
+        @forelse($DealBanner as $deal)
         <div class="box">
-            <img src="/assets/images/product-banner-1.jpg" alt="">
+            <img src="/uploads/{{$deal->slider_image}}" alt="">
             <div class="content">
-                <span>special offer</span>
-                <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
+                <span>{{$deal->top_title}}</span>
+                <h3>{{$deal->title}}</h3>
+                <a href="#" class="btn">{{$deal->button}}</a>
             </div>
         </div>
 
-        <div class="box">
-            <img src="/assets/images/product-banner-2.jpg" alt="">
-            <div class="content">
-                <span>special offer</span>
-                <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
-            </div>
-        </div>
+        @empty
+        @endforelse
 
     </div>
     

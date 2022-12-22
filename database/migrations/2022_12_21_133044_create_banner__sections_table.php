@@ -17,10 +17,10 @@ class CreateBannerSectionsTable extends Migration
             $table->id();
             $table->string('top_title',30);
             $table->string('title',30);
-            $table->text('flag');
+            $table->string('flag');
             $table->string('button',40);
             $table->string('slider_image',50);
-            $table->string('status',30);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
