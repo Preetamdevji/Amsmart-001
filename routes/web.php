@@ -22,7 +22,8 @@ use App\Http\Controllers\Admin\HomeSliderController;
 */
 	Route::group(['prefix' => 'admin'], function() {
 		Route::get('/status/update/brand', [BrandController::class, 'updateStatus'])->name('update_brand_status');
-
+		Route::get('/status/update/product_category', [ProductCategoryController::class, 'updateStatus'])->name('update_Product_cat_status');
+		// Route::get('/product', [ProductController::class, 'viewdetail'])->name('view_products');
 		Route::resource('user', 'App\Http\Controllers\Admin\UserController');
 		Route::resource('product', 'App\Http\Controllers\Admin\ProductController');
 		Route::resource('brand', 'App\Http\Controllers\Admin\BrandController');
@@ -39,7 +40,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
