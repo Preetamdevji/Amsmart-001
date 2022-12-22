@@ -43,9 +43,8 @@
                     <td>{{$item->flag}}</td>
                     <td><img src="{{asset('uploads/'.$item->img)}}" height="25" width="25" class="rounded-circle"></td>
                     <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $item->status ? 'checked' : '' }}></td>
-
                     <td><a href="/admin/cms_pages/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
-                    
+                  
                     <form action="{{url('/')}}/admin/cms_pages/{{$item->id}}" method="post">
                       @method('DELETE')
                       @csrf
