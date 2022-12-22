@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\user;
+use Illuminate\Support\Facades\file;
 
 class UserController extends Controller
 {
@@ -14,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin/user/index');
+        $user = user::all();
+		$data = compact('user');
+        return view('admin/user/index')->with($data);
     }
 
     /**
@@ -35,7 +39,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+		$request->validate([
+		
+			'fullname' => 'required',
+			'designation' => 'required',
+			'mobile' => 'required',
+			'user_img' => 'required',
+			'status' => 'required',
+		]);
+
+
+        $user = new user();
+		$user->fullname = $request['fullname'];
+		$user->designation = $request['designation'];
+		$user->mobile = $request['mobile'];
+		$user->status = $request['status'];
+
+        if($request->hasfile('user_img'))
+		{
+    
+		  $file = $request->file('user_img');
+		  $extension = $file->getClientOriginalExtension();
+		  $filename = time().'.'.$extension;
+		  $file->move('uploads/', $filename);
+		  $user->user_img = $filename;
+
+		}
+
+		$user->save();
+		return redirect()->to('admin/user');
+   
     }
 
     /**
@@ -46,7 +80,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +91,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = user::find($id);
+
+		$data = compact('user');
+        return view('admin/user/edit')->with($data);
     }
 
     /**
@@ -69,7 +106,43 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+		
+			'fullname' => 'required',
+			'designation' => 'required',
+			'mobile' => 'required',
+			'status' => 'required',
+		]);
+        
+        $user = user::find($id);
+        $user->fullname = $request['fullname'];
+		$user->designation = $request['designation'];
+		$user->mobile = $request['mobile'];
+		$user->status = $request['status'];
+
+        if($request->hasfile('user_img'))
+		{
+          $destination = 'uploads/'.$user->user_img;
+		  if(file::exists($destination)){
+
+               file::delete($destination);
+		  }
+		   
+		  $file = $request->file('user_img');
+		  $extension = $file->getClientOriginalExtension();
+		  $filename = time().'.'.$extension;
+		  $file->move('uploads/', $filename);
+		  $user->user_img = $filename;
+
+		}
+
+        $user->save();
+
+        return redirect()->to('admin/user');
+
+
+       
     }
 
     /**
@@ -80,6 +153,21 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = user::find($id);
+		$user->delete();
+		return redirect()->back();
+        
     }
+
+
+    public function updateStatus(Request $request)
+    {
+        $brand = Brand::find($request->brand_id); 
+        $brand->status = $request->status; 
+        $brand->save(); 
+        return response()->json(['Success'=>'Status change successfully.']); 
+    }
+    
+
 }

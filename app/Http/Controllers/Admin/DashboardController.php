@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CRMController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CRMController extends Controller
      */
     public function index()
     {
-        return view('admin/crm_pages/index');
+        return view('admin/dashboard');
     }
 
     /**
@@ -24,7 +24,7 @@ class CRMController extends Controller
      */
     public function create()
     {
-        return view('admin/crm_pages/create');
+        //
     }
 
     /**

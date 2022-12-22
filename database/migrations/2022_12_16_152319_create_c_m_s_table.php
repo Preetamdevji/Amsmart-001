@@ -14,8 +14,16 @@ class CreateCMSTable extends Migration
     public function up()
     {
         Schema::create('c_m_s', function (Blueprint $table) {
+            
             $table->id();
+            $table->string('top_title',30);
+            $table->string('title',30);
+            $table->text('body');
+            $table->string('flag',40);
+            $table->string('img',50);
+            $table->string('status',30);
             $table->timestamps();
+
         });
     }
 
