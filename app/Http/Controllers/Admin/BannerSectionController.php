@@ -48,9 +48,7 @@ class BannerSectionController extends Controller
 			'top_title' => 'required',
 			'title' => 'required',
 			'flag' => 'required',
-            'button' => 'required',
 			'slider_image' => 'required',
-			'status' => 'required',
 		]);
 
         $Banner_Section = new Banner_Section();
@@ -114,9 +112,6 @@ class BannerSectionController extends Controller
 			'top_title' => 'required',
 			'title' => 'required',
 			'flag' => 'required',
-            'button' => 'required',
-
-			'status' => 'required',
 		]);
 
 
@@ -128,6 +123,7 @@ class BannerSectionController extends Controller
         $Banner_Section->top_title = $request['top_title'];
 		$Banner_Section->title = $request['title'];
         $Banner_Section->flag = $request['flag'];
+        $Banner_Section->button = $request['button'];
 		$Banner_Section->status = $request['status'];
 
         if($request->hasfile('slider_image'))
