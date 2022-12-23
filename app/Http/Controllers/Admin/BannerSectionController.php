@@ -47,7 +47,7 @@ class BannerSectionController extends Controller
 		
 			'top_title' => 'required',
 			'title' => 'required',
-			'flag' => 'required',
+			'flag' => 'required|not_in:none',
 			'slider_image' => 'required',
 		]);
 
@@ -111,7 +111,7 @@ class BannerSectionController extends Controller
 		
 			'top_title' => 'required',
 			'title' => 'required',
-			'flag' => 'required',
+			'flag' => 'required|not_in:none',
 		]);
 
         $Banner_Section = Banner_Section::find($id);

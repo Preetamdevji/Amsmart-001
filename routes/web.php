@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\MainController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\BannerSectionController;
 
 
@@ -28,6 +29,7 @@ use App\Http\Controllers\Admin\BannerSectionController;
 		Route::get('/status/update/product_category', [ProductCategoryController::class, 'updateStatus'])->name('update_Product_cat_status');
 
 		Route::resource('dashboard', 'App\Http\Controllers\Admin\DashboardController');
+		Route::get('/dashboard',[DashboardController::class, 'dashboard']);
 		Route::get('/status/user/brand', [BrandController::class, 'updateStatus'])->name('update_user_status');
 
 
@@ -40,15 +42,24 @@ use App\Http\Controllers\Admin\BannerSectionController;
 		Route::resource('banner_section', 'App\Http\Controllers\Admin\BannerSectionController');
 
 
+
+		Route::get('/profile', [HomeController::class, 'profile'])->name('profile.view');
+		Route::post('/profile/update', [HomeController::class, 'profile_update'])->name('profile.update');
+		Route::post('/update_password', [HomeController::class, 'update_password'])->name('update.password');
+
+
 	});
 
 
 /**** BEGIN FRONTEND ROUTES ****/
+Route::get('/product-detail/{id}', [MainController::class, 'ProductDetail']);
 Route::get('/products', [MainController::class, 'product']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/', [MainController::class, 'index']);
 Route::get('/search',[MainController::class, 'product'])->name('search');
+
+Route::get('/shopbycategory/{id}', [MainController::class, 'shopby']);
 
 
 

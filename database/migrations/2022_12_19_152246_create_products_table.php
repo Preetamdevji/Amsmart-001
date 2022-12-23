@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('new_price');
             $table->string('color_family');
             $table->string('product_img');
+            $table->string('hot_selling')->default(0);
             $table->text('description');
             $table->boolean('status')->default(1);
             $table->timestamps();

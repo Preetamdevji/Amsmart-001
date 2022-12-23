@@ -51,8 +51,8 @@
     <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
-        <img src="/assets/images/user-img.png" alt="">
-        <h3>Noor Hassan</h3>
+        <img src="/assets/images/amsmart.webp" style="width: 190px; height: 190px;" alt="">
+        <h3>AMsmart Solution</h3>
     </div>
 
     <nav class="navbar">
@@ -87,17 +87,16 @@
     </div>
 
     <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
+        <a href="https://www.facebook.com/amsmartonline" class="fab fa-facebook-f"></a>
+        <a href="https://wa.me/03452252254" class="fab fa-whatsapp"></a>
+        <a href="https://www.instagram.com/umair_1985/" class="fab fa-instagram"></a>
     </div>
 
 </section>
 
 <section class="credit">
 
-    <p> created by <span>Unknown Team</span> | all rights reserved by 2023! </p>
+    <p> created by <span>SquadCloud Team</span> | all rights reserved by 2023! </p>
 
 </section>
 

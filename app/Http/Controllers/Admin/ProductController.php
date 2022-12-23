@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get();
+        $products = Product::with('LinkProductCategory')->with('LinkProductBrand')->get();
         return view('admin/product/index',compact('products'));
     }
 
@@ -71,8 +71,6 @@ class ProductController extends Controller
     	   $file->move('./uploads/', $fileName);
     	}
         
-           
-           
            Product::create([
               
                 'product_name' => request()->get('product_name'),
@@ -82,6 +80,7 @@ class ProductController extends Controller
                 'old_price' => request()->get('old_price'),
                 'new_price' => request()->get('new_price'),
                 'color_family' => request()->get('color_family'),
+                'hot_selling' => request()->get('hot_selling'),
                 'description' => request()->get('description'),
                 'status' => request()->get('status'),
                 'product_img' => $fileName,
@@ -157,6 +156,7 @@ class ProductController extends Controller
                 'old_price' => request()->get('old_price'),
                 'new_price' => request()->get('new_price'),
                 'color_family' => request()->get('color_family'),
+                'hot_selling' => request()->get('hot_selling'),
                 'product_img' => ($fileName) ? $fileName : $currentImage,
                 'description' => request()->get('description'),
                 'status' => request()->get('status'),

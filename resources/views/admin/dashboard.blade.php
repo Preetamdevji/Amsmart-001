@@ -14,7 +14,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Products</span>
-              <span class="info-box-number">3,410</span>
+              <span class="info-box-number">{{ $products }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -27,7 +27,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Brands</span>
-              <span class="info-box-number">410</span>
+              <span class="info-box-number">{{ $brands }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -40,7 +40,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Categories</span>
-              <span class="info-box-number">1,648</span>
+              <span class="info-box-number">{{ $categories }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -53,7 +53,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Contacts</span>
-              <span class="info-box-number">93,139</span>
+              <span class="info-box-number">{{ $contacts }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>

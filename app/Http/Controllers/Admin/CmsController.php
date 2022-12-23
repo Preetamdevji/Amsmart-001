@@ -47,9 +47,7 @@ class CmsController extends Controller
 			'top_title' => 'required',
 			'title' => 'required',
 			'text' => 'required',
-            'flag' => 'required',
-			'img' => 'required',
-			'status' => 'required',
+            'flag' => 'required|not_in:none',
 		]);
 
 
@@ -117,8 +115,7 @@ class CmsController extends Controller
 			'top_title' => 'required',
 			'title' => 'required',
 			'text' => 'required',
-            'flag' => 'required',
-			'status' => 'required',
+            'flag' => 'required|not_in:none',
 		]);
 
 

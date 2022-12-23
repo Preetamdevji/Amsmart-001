@@ -21,8 +21,8 @@
                   <tr>
                     <th><input type="checkbox" name="" id="checkAll"></th>
                     <th>Product Name</th>
-                    <th>Category ID</th>
-                    <th>Brand ID</th>
+                    <th>Category</th>
+                    <th>Brand</th>
                     <th>Product Image</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -33,8 +33,8 @@
                 <tr>
                   <td><input type="checkbox" name="" id="" class="checkSingle"></td>
                   <td>{{$product->product_name}}</td>
-                  <td>{{$product->category_id}}</td>
-                  <td>{{$product->brand_id}}</td>
+                  <td>{{$product->LinkProductCategory->title}}</td>
+                  <td>{{$product->LinkProductBrand->title}}</td>
                   <td>
                     @if($product->product_img == 'No image found')
                             <img src="/assets/admin/dist/img/no_image.png" width="30" height="30" class="img-thumbnails" alt="No image found">

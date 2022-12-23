@@ -37,11 +37,11 @@
                 <div class="col-md-4 col-sm-8">
                  <div class="form-group @error('flag') has-error @enderror">
                     <label for="title">Flag<span class="text text-red">*</span></label>
-                    <select class="form-control select2" value="{{$Banner_Section->flag}}" name="flag" id="flag" style="width: 100%;">
+                    <select class="form-control select2"  name="flag" id="flag" style="width: 100%;">
                       <option value="none"> -- Select Flag -- </option>
-                      <option value="">home_slider</option>
-                      <option value="">home_banner</option>
-                      <option value="">deal_banner</option>
+                      <option value="home_slider" {{ $Banner_Section->flag == 'home_slider' ? 'selected' : '' }}>home_slider</option>
+                      <option value="home_banner" {{ $Banner_Section->flag == 'home_banner' ? 'selected' : '' }}>home_banner</option>
+                      <option value="deal_banner" {{ $Banner_Section->flag == 'deal_banner' ? 'selected' : '' }}>deal_banner</option>
                     </select>
                   </div>
                 </div> 

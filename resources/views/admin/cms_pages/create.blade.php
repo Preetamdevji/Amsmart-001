@@ -31,18 +31,25 @@ Add CMS Pages
                     </div>
 
               
-              
                     <div class="form-group @error('text') has-error @enderror">
-                      <label for="availability">Description <span class="text text-red">*</span></label>
-                      <input type="text" class="form-control" value="{{old('text')}}" name="text" id="text" placeholder="text">
-                    </div>
+                    <label for="message">Body</label>
+                    <textarea class="form-control" name="text" rows="5" id="text" placeholder="Body">{{old('text')}}</textarea>
+                  </div>
+                
 
 
-
-                    <div class="form-group @error('flag') has-error @enderror">
-                      <label for="availability">Flag<span class="text text-red">*</span></label>
-                      <input type="text" class="form-control" value="{{old('flag')}}" name="flag" id="flag" placeholder="flag">
-                    </div>
+                <div class="row gx-1"> 
+                <div class="col-md-4 col-sm-8">
+                 <div class="form-group @error('flag') has-error @enderror">
+                    <label for="title">Flag<span class="text text-red">*</span></label>
+                    <select class="form-control select2" value="{{old('flag')}}" name="flag" id="flag" style="width: 100%;">
+                      <option> -- Select Flag -- </option>
+                      <option value="about_us">about_us</option>
+                      <option value="faq">faq</option>
+                    </select>
+                  </div>
+                </div> 
+              </div>
 
       
                
