@@ -5,47 +5,71 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner_Section;
-
-
-use App\models\Product;
+use App\models\Product_Category;
+use App\Models\Product;
+use App\Models\CMS;
 
 class MainController extends Controller
 {
     public function index()
     {
-        
+        $FeaturedProducts = Product::where('status', 1)->where('hot_selling', 1)->get();
+        $NewArrivals = Product::where('status', 1)->latest()->take(9)->get();
         $HomeBanners = Banner_Section::where('flag', 'home_banner')->where('status', 1)->get();
         $sliders = Banner_Section::where('flag', 'home_slider')->where('status', 1)->get();
-    	return view('index', compact('sliders', 'HomeBanners'));
+    	return view('index', compact('sliders', 'HomeBanners', 'FeaturedProducts', 'NewArrivals'));
     }
 
     public function about()
     {
-    	return view('about');
+        $CrmAbout = CMS::where('status', 1)->where('flag', 'about_us')->get();
+        $CmsFaq = CMS::where('status', 1)->where('flag', 'faq')->get();
+    	return view('about', compact('CmsFaq', 'CrmAbout'));
     }
 
-    public function product()
+
+       
+
+    public function product(request $request)
     {
+       
+    //    $product = Product::where('status', 1)->get();
 
         $search = $request['search'] ?? "";
 
         if($search != ""){
-            $products = Product::where('product_name', '=', $search)->get();
+            $product = Product::where('product_name', 'LIKE', "%$search%")->get();
         }
         else{
-            $products = Product::with('product_name')->where('status', 1)->get(); 
+            $product = Product::where('status', 1)->get();
         }
-    	return view('products', compact('products', 'search'));
-        
 
+        $Product_Cate = Product_Category::all();
+        $AllProduct = Product::where('status', 1)->get();
         $DealBanner = Banner_Section::where('flag', 'deal_banner')->where('status', 1)->get();
-    	return view('products', compact('DealBanner'));
 
+       return view('products', compact('DealBanner', 'Product_Cate', 'AllProduct', 'product', 'search'));
+
+    }
+
+    public function ProductDetail($id)
+    {
+        $product = Product::find($id);
+        return view('product-detail', compact('product'));
     }
 
     public function contact()
     {
     	return view('contact');
+    }
+
+    public function shopby($id){
+
+        $id = $id;
+      $shopby = Product::where('category_id', $id)->get();
+
+      return view('shopbycategory', compact('shopby','id'));
+       
     }
 
 

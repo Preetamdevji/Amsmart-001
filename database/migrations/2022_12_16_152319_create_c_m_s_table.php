@@ -20,7 +20,7 @@ class CreateCMSTable extends Migration
             $table->string('title',30);
             $table->text('body');
             $table->string('flag',40);
-            $table->string('img',50);
+            $table->string('img',50)->nullable();
             $table->string('status',30);
             $table->timestamps();
 

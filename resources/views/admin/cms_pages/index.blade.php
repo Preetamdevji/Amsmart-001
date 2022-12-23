@@ -24,7 +24,6 @@
                   <th width="4%"><input type="checkbox" name="" id="checkAll"></th>
                     <th width="25%">top_title</th>
                     <th width="15%">title</th>
-                    <th width="20%">body</th>
                     <th width="20%">flag</th>
                     <th width="20%">user Image</th>
                     <th width="10%">Status</th>
@@ -39,9 +38,14 @@
 
                     <td>{{$item->top_title}}</td>
                     <td>{{$item->title}}</td>
-                    <td>{{$item->body}}</td>
                     <td>{{$item->flag}}</td>
-                    <td><img src="{{asset('uploads/'.$item->img)}}" height="25" width="25" class="rounded-circle"></td>
+                    <td>
+                       @if($item->img == 'No image found')
+                            <img src="/assets/admin/dist/img/no-image.png" width="100" height="100" class="img-thumbnails" alt="No image found">
+                        @else
+                            <img src="{{asset('uploads/'.$item->img)}}" height="25" width="25" class="rounded-circle" alt="No image found">
+                        @endif
+                    </td>
                     <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $item->status ? 'checked' : '' }}></td>
                     <td><a href="/admin/cms_pages/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
                   

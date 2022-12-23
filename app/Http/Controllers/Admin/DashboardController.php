@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Brand;
+use App\Models\Product_Category;
+use App\Models\Contact;
 
 class DashboardController extends Controller
 {
@@ -14,6 +18,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // $product = Product::count()->get();
         return view('admin/dashboard');
     }
 
@@ -81,5 +86,13 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dashboard(){
+        $result['products']=Product::count();
+        $result['brands']=Brand::count();
+        $result['categories']=Product_Category::count();
+        $result['contacts']=Contact::count();
+        return view('admin.dashboard', $result);
     }
 }

@@ -43,40 +43,20 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+         
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/assets/admin/dist/img/myimage.JPG" class="user-image" alt="User Image">
-              <span class="hidden-xs">Preetam Kumar Lohana</span>
+              <img src="/uploads/{{ Auth::user()->user_img }}" width="160" height="160" class="user-image img_profile" alt="{{ Auth::user()->fullname }}">
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="/assets/admin/dist/img/myimage.JPG" class="img-circle" alt="User Image">
+                <img src="/uploads/{{ Auth::user()->user_img }}" width="160" height="160" class="img-circle img_profile" alt="{{ Auth::user()->fullname }}">
 
                 <p>
-                  Preetam Kumar Lohana - Web Developer
+                  {{ Auth::user()->fullname }} - {{ Auth::user()->designation }}
                   <small>Member since Dec. 2022</small>
                 </p>
               </li>
@@ -84,7 +64,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
                 </div>
 
                 <div class="pull-right">
@@ -114,10 +94,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/assets/admin/dist/img/myimage.JPG" class="img-circle" alt="User Image">
+          <img src="/uploads/{{ Auth::user()->user_img }}" width="160" height="160" class="img-circle img_profile" alt="{{ Auth::user()->fullname }}">
         </div>
         <div class="pull-left info">
-          <p>Preetam Kumar Lohana</p>
+          <p>{{ Auth::user()->fullname }}</p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -155,7 +135,7 @@
 
             <li class="{{ Request::is('admin/product_category/create') || Request::is('admin/product_category') ? 'active' : null }} treeview">
                 <a href="#">
-                    <i class="fa fa-pencil"></i> <span>Product Category</span>
+                    <i class="fa fa-tasks"></i> <span>Product Category</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -181,7 +161,7 @@
 
             <li class="{{ Request::is('admin/cms/create') || Request::is('admin/cms') ? 'active' : null }} treeview">
                 <a href="#">
-                    <i class="fa fa-film"></i> <span>CMS</span>
+                    <i class="fa fa-tasks"></i> <span>CMS</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

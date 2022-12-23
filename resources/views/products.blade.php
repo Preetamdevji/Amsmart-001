@@ -7,48 +7,17 @@
 <!-- category section starts  -->
 
 <section class="category">
-
     <h1 class="heading"> shop by <span>category</span> </h1>
-
-    <div class="box-container">
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img1.png" alt="">
-            <h3>televisions</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img2.png" alt="">
-            <h3>smartphones</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img3.png" alt="">
-            <h3>headphones</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img4.png" alt="">
-            <h3>smartwatches</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img5.png" alt="">
-            <h3>games</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img6.png" alt="">
-            <h3>camera</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="/assets/images/cat_img7.png" alt="">
-            <h3>speakers</h3>
-        </a>
-
+     <div class="box-container">
+          @forelse($Product_Cate as $item)
+            <a href="/shopbycategory/{{$item->id}}" class="box">
+              <i class="fa fa-bars" style="font-size:36px;"></i>
+                <h3>{{$item->title}}</h3>
+            </a>
+          @empty
+          <div style="color:red;">No Category available</div>
+          @endforelse
     </div>
-
 </section>
 
 <!-- category section ends -->
@@ -57,225 +26,23 @@
 
 <section class="products">
 
-    <h1 class="heading"> featured <span>products</span> </h1>
+    <h1 class="heading"> All <span>Products</span> </h1>
 
     <div class="box-container">
-
-        <div class="box">
+        @forelse($AllProduct as $product)
+        <a href="/product-detail/{{$product->id}}" class="box">
             <div class="image">
-                <img src="/assets/images/product-1.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-1-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
+                <img src="/uploads/{{$product->product_img}}" style="width: 300px; height: 300px" class="main-img" alt="">
+                <img src="/uploads/{{$product->product_img}}" style="width: 300px; height: 300px" class="hover-img" alt="">
             </div>
             <div class="content">
-                <h3>smartphone</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
+                <h3>{{$product->product_name}}</h3>
+                <div class="price">${{$product->new_price}} <span>${{$product->old_price}}</span></div>
             </div>
-        </div>
+        </a>
 
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-2.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-2-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>camera</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-3.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-3-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>television</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-4.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-4-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>speaker</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-5.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-5-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>speaker</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-6.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-6-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>smartwatch</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-7.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-7-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>headphone</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-8.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-8-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>smartphone</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/product-9.jpg" class="main-img" alt="">
-                <img src="/assets/images/product-9-hover.jpg" class="hover-img" alt="">
-                <div class="icons">
-                    <a href="#" class="fas fa-shopping-cart"></a>
-                    <a href="#" class="fas fa-search-plus"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-share"></a>
-                </div>
-            </div>
-            <div class="content">
-                <h3>camera</h3>
-                <div class="price">$249.99 <span>$399.99</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
+        @empty
+        @endforelse
 
     </div>
 
@@ -292,11 +59,11 @@
     <div class="box-container">
         @forelse($DealBanner as $deal)
         <div class="box">
-            <img src="/uploads/{{$deal->slider_image}}" alt="">
+            <img src="/uploads/{{$deal->slider_image}}" style="width: 506px; height: 296px;" alt="">
             <div class="content">
                 <span>{{$deal->top_title}}</span>
                 <h3>{{$deal->title}}</h3>
-                <a href="#" class="btn">{{$deal->button}}</a>
+                <a href="/contact" class="btn">{{$deal->button}}</a>
             </div>
         </div>
 

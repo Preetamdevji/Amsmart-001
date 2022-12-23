@@ -73,6 +73,20 @@
                       <small class="label label-warning">Cover Photo will be uploaded</small>
                     </div>
 
+                  <div class="form-group">
+                    <label>Hot Selling</label>
+                    <div class="form-check">
+                          <div class="d-inline-block">
+                            <input name="hot_selling" value="1" type="radio" id="crYes" class="form-check-input" >
+                            <label class="form-check-label" for="crYes">Yes</label>
+                          </div>
+                          <div class="d-inline-block mx-5">
+                            <input name="hot_selling" value="0" type="radio" id="crNo" checked class="form-check-input">
+                            <label class="form-check-label" for="crNo">No</label>
+                          </div>
+                        </div> 
+                  </div>
+
                     <div class="form-group @error('description') has-error @enderror">
                       <label for="description">Description <span class="text text-red">*</span></label>
                       <textarea class="form-control" name="description" value="{{old('description')}}" rows="5" id="description" placeholder="Description"></textarea>

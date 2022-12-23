@@ -14,7 +14,7 @@
         @forelse($sliders as $slider)
         <div class="swiper-slide slide">
             <div class="image">
-                <img src="/uploads/{{$slider->slider_image}}" alt="">
+                <img src="/uploads/{{$slider->slider_image}}" style="width: 300px; height: 300px;" alt="">
             </div>
             <div class="content">
                 <span>{{$slider->top_title}}</span>
@@ -44,7 +44,7 @@
     <div class="box-container">
         @forelse($HomeBanners as $banner)
         <a href="#" class="box">
-            <img src="/uploads/{{$banner->slider_image}}" width="825px" height="550px" alt="No Image Found">
+            <img src="/uploads/{{$banner->slider_image}}" style="width: 329px; height: 246px;" alt="No Image Found">
             <div class="content">
                 <span>{{$banner->top_title}}</span>
                 <h3>{{$banner->title}}</h3>
@@ -64,117 +64,52 @@
 
 <section class="arrivals">
 
-    <h1 class="heading"> new <span>arrivals</span> </h1>
+    <h1 class="heading"> New <span>Arrivals</span> </h1>
 
     <div class="box-container">
+        @forelse($NewArrivals as $newArrival)
 
-        <div class="box">
+        <a href="/product-detail/{{$newArrival->id}}" class="box">
             <div class="image">
-                <img src="/assets/images/arrival-1.jpg" class="main-img" alt="">
-                <img src="/assets/images/arrival-1-hover.jpg" class="hover-img" alt="">
+                <img src="/uploads/{{$newArrival->product_img}}" style="width: 150px; height: 150px;" class="main-img" alt="">
+                <img src="/uploads/{{$newArrival->product_img}}" style="width: 150px; height: 150px;" class="hover-img" alt="">
             </div>
             <div class="content">
-                <h3>HD television</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
+                <h3>{{$newArrival->product_name}}</h3>
+                <div class="price"> ${{$newArrival->new_price}} <span>${{$newArrival->old_price}}</span> </div>
             </div>
-        </div>
+        </a>
+        @empty
+        @endforelse
 
-        <div class="box">
+    </div>
+
+</section>
+
+
+<section class="products">
+
+    <h1 class="heading"> Featured <span>Products</span> </h1>
+
+    <div class="box-container">
+        @forelse($FeaturedProducts as $Featured)
+        <a href="/product-detail/{{$Featured->id}}" class="box"><span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;">Hot</span>
+
             <div class="image">
-                <img src="/assets/images/arrival-2.jpg" class="main-img" alt="">
-                <img src="/assets/images/arrival-2-hover.jpg" class="hover-img" alt="">
+                <img src="/uploads/{{$Featured->product_img}}" style="width: 270px; height: 300px;" class="main-img" alt="">
+                <img src="/uploads/{{$Featured->product_img}}" style="width: 270px; height: 300px;" class="hover-img" alt="">
+
             </div>
             <div class="content">
-                <h3>lenovo laptop</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
+                <h3>{{$Featured->product_name}}</h3>
+                <div class="price">${{$Featured->new_price}} <span>${{$Featured->old_price}}</span></div>
             </div>
-        </div>
+        </a>
 
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/arrival-3.jpg" class="main-img" alt="">
-                <img src="/assets/images/arrival-3-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new smartphone</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
+        @empty
+        @endforelse
 
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/arrival-4.jpg" class="main-img" alt="">
-                <img src="/assets/images/arrival-4-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new printer</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/arrival-5.jpg" class="main-img" alt="">
-                <img src="/assets/images/arrival-5-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new headphones</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="/assets/images/arrival-6.jpg" class="main-img" alt="">
-                <img src="/assets/images/arrival-6-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new speakers</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 

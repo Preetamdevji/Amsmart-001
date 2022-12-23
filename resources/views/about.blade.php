@@ -7,17 +7,17 @@
 <!-- about section starts  -->
 
 <section class="about">
-
+@forelse($CrmAbout as $about)
     <div class="image">
-        <img src="/assets/images/about-img.png" alt="">
+        <img src="/uploads/{{$about->img}}" style="width: 520px; height: 370px;" alt="No image found">
     </div>
 
     <div class="content">
-        <h3>our story</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam modi ea fuga quibusdam fugiat porro doloremque, quas dignissimos culpa unde. Recusandae maxime aliquam beatae reiciendis, facilis voluptatum eligendi nesciunt ipsa?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, distinctio et? Odio voluptatum eius reprehenderit saepe quisquam excepturi molestiae architecto.</p>
+        <h3>{{$about->title}}</h3>
+        <p>{{$about->body}}</p>
     </div>
-
+@empty
+@endforelse
 </section>
 
 <!-- about section ends -->
@@ -26,59 +26,21 @@
 
 <section class="faq">
 
-    <h1 class="heading"> questions & <span>answers</span> </h1>
+    <h1 class="heading"> Questions & <span>Answers</span> </h1>
 
     <div class="accordion-container">
-
+        @forelse($CmsFaq as $Faq)
         <div class="accordion">
             <div class="accordion-heading">
-                <h3>how to make websites?</h3>
+                <h3>{{$Faq->title}}</h3>
                 <i class="fas fa-angle-down"></i>
             </div>
             <p class="accordioin-content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, laboriosam non eligendi reiciendis quis laborum exercitationem voluptatibus autem harum nihil nisi sed mollitia, quam blanditiis architecto cumque? Sit, voluptate maiores.
+                {{$Faq->body}}
             </p>
         </div>
-
-        <div class="accordion">
-            <div class="accordion-heading">
-                <h3>how to place order online?</h3>
-                <i class="fas fa-angle-down"></i>
-            </div>
-            <p class="accordioin-content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, laboriosam non eligendi reiciendis quis laborum exercitationem voluptatibus autem harum nihil nisi sed mollitia, quam blanditiis architecto cumque? Sit, voluptate maiores.
-            </p>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-heading">
-                <h3>how to pay online?</h3>
-                <i class="fas fa-angle-down"></i>
-            </div>
-            <p class="accordioin-content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, laboriosam non eligendi reiciendis quis laborum exercitationem voluptatibus autem harum nihil nisi sed mollitia, quam blanditiis architecto cumque? Sit, voluptate maiores.
-            </p>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-heading">
-                <h3>is online payment safe?</h3>
-                <i class="fas fa-angle-down"></i>
-            </div>
-            <p class="accordioin-content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, laboriosam non eligendi reiciendis quis laborum exercitationem voluptatibus autem harum nihil nisi sed mollitia, quam blanditiis architecto cumque? Sit, voluptate maiores.
-            </p>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-heading">
-                <h3>how to contact service center?</h3>
-                <i class="fas fa-angle-down"></i>
-            </div>
-            <p class="accordioin-content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, laboriosam non eligendi reiciendis quis laborum exercitationem voluptatibus autem harum nihil nisi sed mollitia, quam blanditiis architecto cumque? Sit, voluptate maiores.
-            </p>
-        </div>
+        @empty
+        @endforelse
 
     </div>
 

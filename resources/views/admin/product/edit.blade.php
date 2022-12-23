@@ -55,28 +55,43 @@
                   
                     <div class="form-group @error('old_price') has-error @enderror">
                   <label for="old_price">Old Price<span class="text text-red">*</span></label> 
-                  <input type="text" class="form-control" name="old_price" value="{{$products->availability}}" id="old_price" placeholder="Old Price">
+                  <input type="text" class="form-control" name="old_price" value="{{$products->old_price}}" id="old_price" placeholder="Old Price">
                  </div>
                  
                  <div class="form-group @error('new_price') has-error @enderror">
                     <label for="new_price">New Price</label>
-                    <input type="text" class="form-control" name="new_price" value="{{$products->availability}}" id="new_price" placeholder="New Price">
+                    <input type="text" class="form-control" name="new_price" value="{{$products->new_price}}" id="new_price" placeholder="New Price">
                   </div>
                  
                   <div class="form-group @error('color_family') has-error @enderror">
                     <label for="color_family">Color Family</label>
-                    <input type="text" class="form-control" name="color_family" value="{{$products->availability}}" id="color_family" placeholder="Color Family">
+                    <input type="text" class="form-control" name="color_family" value="{{$products->color_family}}" id="color_family" placeholder="Color Family">
                   </div>
 
                     <div class="form-group @error('product_img') has-error @enderror">
                       <label for="product_img">Product Image</label>
-                      <input type="file" class="form-control" name="product_img" id="product_img" value="{{$products->availability}}">
+                      <input type="file" class="form-control" name="product_img" id="product_img" value="{{$products->product_img}}">
                       <small class="label label-warning">Cover Photo will be uploaded</small>
                     </div>
 
+                    <div class="form-group">
+                    <label>Hot Selling</label>
+                    <div class="form-check">
+                          <div class="d-inline-block">
+                            <input name="hot_selling" value="1" type="radio" id="crYes" {{ $products->status == 1 ? 'checked' : '' }} >
+                            <label class="form-check-label" for="crYes">Yes</label>
+                          </div>
+                          <div class="d-inline-block mx-5">
+                            <input name="hot_selling" value="0" type="radio" id="crNo" {{ $products->status == 0 ? 'checked' : '' }}>
+                            <label class="form-check-label" for="crNo">No</label>
+                          </div>
+                        </div> 
+                  </div>
+
+
                     <div class="form-group @error('description') has-error @enderror">
                       <label for="description">Description <span class="text text-red">*</span></label>
-                      <textarea class="form-control" name="description" rows="5" id="description" placeholder="Description">{{$products->availability}}</textarea>
+                      <textarea class="form-control" name="description" rows="5" id="description" placeholder="Description">{{$products->description}}</textarea>
                     </div>
 
                     <div class="row gx-3">

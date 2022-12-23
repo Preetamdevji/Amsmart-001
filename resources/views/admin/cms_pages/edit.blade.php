@@ -31,23 +31,32 @@
                       <input type="text" value="{{$cms->title}}" name="title" class="form-control" id="designation" placeholder="designation">
                     </div>
 
+
                     <div class="form-group @error('text') has-error @enderror">
-                    <label for="body">Description <span class="text text-red">*</span></label>
-                      <input type="text" value="{{$cms->body}}" name="text" class="form-control" id="text" placeholder="text">
-                    </div>
+                    <label for="message">Body <span class="text text-red">*</span></label>
+                    <textarea class="form-control" name="text" rows="5" id="text" placeholder="Body">{{$cms->body}}</textarea>
+                  </div>
 
           
-                    <div class="form-group @error('flag') has-error @enderror">
-                    <label for="slug">flag <span class="text text-red">*</span></label>
-                      <input type="text" value="{{$cms->flag}}" name="flag" class="form-control" id="flag" placeholder="body">
-                    </div>
+                    <div class="row gx-1"> 
+                <div class="col-md-4 col-sm-8">
+                 <div class="form-group @error('flag') has-error @enderror">
+                    <label for="title">Flag<span class="text text-red">*</span></label>
+                    <select class="form-control select2"  name="flag" id="flag" style="width: 100%;">
+                      <option value="none"> -- Select Flag -- </option>
+                      <option value="about_us" {{ $cms->flag == 'about_us' ? 'selected' : '' }}>about_us</option>
+                      <option value="faq" {{ $cms->flag == 'faq' ? 'selected' : '' }}>faq</option>
+                    </select>
+                  </div>
+                </div> 
+              </div>
 
 
                  
                    <div class="col-xs-6">
                     <div class="form-group @error('img') has-error @enderror">
                       <label for="book_img">Image</label>
-                      <input type="file" class="form-control" name="img" id="img" >
+                      <input type="file" class="form-control" name="img" id="img" alt="NO IMAGE FOUND" >
                       <small class="label label-warning">Section Image will be uploaded</small>
                     </div>
 
