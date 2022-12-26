@@ -20,7 +20,7 @@
         display: flex;
     }
     h3{
-        font-size: 20px;
+        font-size: 30px;
         font-weight: 600;
         margin: 0px 0 00px 0;
     }
@@ -53,7 +53,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Roboto&display=swap" rel="stylesheet">
     </head>
     <body>
-<SECTION class="home-section">
+<section style="height:540px;" class="home-section">
     <div class="container">
 
 <div class="first-section">
@@ -67,16 +67,16 @@
         
         <h5>Brand : <b>{{$product->LinkProductBrand->title}}</b></h5>
         
-        <h4><b id="seventy">Rs:{{$product->new_price}} </b> <strike>Rs:{{$product->old_price}}</strike></h4>
-        <h5>Color Family : <b>{{$product->color_family}}</b></h5>
-        <h5>Availability : <b>{{$product->availability}}</b></h5>
-        <h5>Category : <b>{{$product->LinkProductCategory->title}}</b></h5>
+        <h4 style="margin-bottom: 20px;"><b id="seventy">Rs:{{$product->new_price}} </b> <span style="text-decoration: line-through">Rs:{{$product->old_price}}</s></h4>
+        <h5 style="margin-bottom: 10px;">Color Family : <b>{{$product->color_family}}</b></h5>
+        <h5 style="margin-bottom: 10px;">Availability : <b>{{$product->availability}}</b></h5>
+        <h5 style="margin-bottom: 10px;">Category : <b>{{$product->LinkProductCategory->title}}</b></h5>
         <!-- <h3 id="last">Product details of OPPO A16e 4+64GB Memory Mobile Phone</h3> -->
-        <ul>
-            <li>{{$product->description}}</li>
-        </ul>
+        <!-- <ul style="list-style: none"> -->
+            <p style="font-size: 14px;">{{$product->description}}</p>
+        <!-- </ul> -->
     </div>
 </div>
     </div>
-</SECTION>
+</section>
 @endsection

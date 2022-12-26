@@ -25,7 +25,6 @@
         @empty
         @endforelse
 
-
         </div>
 
         <div class="swiper-button-next"></div>
@@ -93,7 +92,8 @@
 
     <div class="box-container">
         @forelse($FeaturedProducts as $Featured)
-        <a href="/product-detail/{{$Featured->id}}" class="box"><span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;">Hot</span>
+        <a href="/product-detail/{{$Featured->id}}" class="box" style="position: relative">
+            <span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;position: absolute;top: 13px;left: 14px;padding: 5px;">Hot</span>
 
             <div class="image">
                 <img src="/uploads/{{$Featured->product_img}}" style="width: 270px; height: 300px;" class="main-img" alt="">
