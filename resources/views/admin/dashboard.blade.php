@@ -61,7 +61,44 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
+      
+      <!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: ""
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: {{$products}}, label: "Products"},
+			{y: {{$brands}}, label: "Brands"},
+      {y: {{$categories}}, label: "Categories"},
+      {y: {{ $contacts }}, label: "Contacts"},
+      
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+
+<div id="chartContainer" style="height: 500px; width: 100%;">
+</div>
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+        <!-- /.row -->
   </section>
     <!-- /.content -->
 

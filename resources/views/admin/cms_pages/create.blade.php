@@ -35,7 +35,7 @@
                 <div class="col-md-12 col-12">
                     <div class="form-group @error('text') has-error @enderror">
                     <label for="message">Body</label>
-                    <textarea class="form-control" name="text" rows="5" id="text" placeholder="Body">{{old('text')}}</textarea>
+                    <textarea maxlength="420" class="form-control" name="text" rows="5" id="text" placeholder="Body">{{old('text')}}</textarea>
                   </div>
                 </div>
               </div>
