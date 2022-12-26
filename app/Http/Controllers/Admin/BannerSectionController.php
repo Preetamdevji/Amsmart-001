@@ -153,4 +153,12 @@ class BannerSectionController extends Controller
 		$Banner_Section->delete();
 		return redirect()->back();
     }
+
+    public function updateStatus(Request $request)
+    {
+        $Banner_Section = Banner_Section::find($request->banner_id); 
+        $Banner_Section->status = $request->status; 
+        $Banner_Section->save(); 
+        return response()->json(['Success'=>'Status change successfully.']); 
+    }
 }

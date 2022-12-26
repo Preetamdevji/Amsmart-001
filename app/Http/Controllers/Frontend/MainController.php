@@ -38,17 +38,16 @@ class MainController extends Controller
         $search = $request['search'] ?? "";
 
         if($search != ""){
-            $product = Product::where('product_name', 'LIKE', "%$search%")->get();
+            $Allproducts = Product::where('product_name', 'LIKE', "%$search%")->get();
         }
         else{
-            $product = Product::where('status', 1)->get();
+            $Allproducts = Product::where('status', 1)->get();
         }
 
         $Product_Cate = Product_Category::all();
-        $AllProduct = Product::where('status', 1)->get();
         $DealBanner = Banner_Section::where('flag', 'deal_banner')->where('status', 1)->get();
 
-       return view('products', compact('DealBanner', 'Product_Cate', 'AllProduct', 'product', 'search'));
+       return view('products', compact('DealBanner', 'Product_Cate','Allproducts', 'search'));
 
     }
 

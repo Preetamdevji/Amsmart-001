@@ -128,7 +128,7 @@ class ProductCategoryController extends Controller
 
     public function updateStatus(Request $request)
     {
-        $category = Product_Category::find($request->category_id); 
+        $category = Product_Category::find($request->Product_cat_id); 
         $category->status = $request->status; 
         $category->save(); 
         return response()->json(['Success'=>'Status change successfully.']); 

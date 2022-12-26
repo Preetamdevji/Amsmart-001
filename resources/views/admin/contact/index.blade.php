@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-  Manage Contact     
+  Manage Contacts     
 @endsection
 @section('main-content')
 
@@ -11,7 +11,7 @@
      <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-                    <a href="/contact" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+                    <a href="/contact" class="btn btn-default btn-xm" data-toggle="tooltip" title="insert"><i class="fa fa-plus"></i></a>
               </h3>
             </div>
             <!-- /.box-header -->
@@ -37,11 +37,11 @@
                   <td>{{$contact->subject}}</td>
                   <td>{{$contact->message}}</td>
                   <td>
-                      <a href="/admin/contact/{{ $contact->id }}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                      <a href="/admin/contact/{{ $contact->id }}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a>
                       <form action="/admin/contact/{{ $contact->id }}" method="Post">
                       @csrf
                       @method('delete')
-                      <button onclick="return confirm('Are You Sure, You Want To Delete this?')" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
+                      <button onclick="return confirm('Are You Sure, You Want To Delete this?')" data-toggle="tooltip" title="trash" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
                       </form>
                   </td>
                 </tr>

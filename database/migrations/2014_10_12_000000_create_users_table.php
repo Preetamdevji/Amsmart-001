@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('mobile',40)->nullable();
             $table->string('facebook_id',40)->nullable();
+            $table->text('bio')->nullable();
             $table->string('user_img',50)->nullable();
             $table->boolean('status')->default(1);
 

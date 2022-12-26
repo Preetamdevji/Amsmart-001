@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('page-title')
-    Products
+    Product Detail
 @endsection
 @section('main-content')
 
@@ -60,10 +60,10 @@
 
 <div class="img-one">
         
-    <img src="/uploads/{{$product->product_img}}"> 
+    <img src="/uploads/{{$product->product_img}}" style="width: 350px; height: 350px;"> 
     </div>
     <div class="content">
-        <h3>{{$product->product_name}}</h3>
+        <h3 style="margin-top: 20px;">{{$product->product_name}}</h3>
         
         <h5>Brand : <b>{{$product->LinkProductBrand->title}}</b></h5>
         

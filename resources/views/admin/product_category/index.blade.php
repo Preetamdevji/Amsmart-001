@@ -11,7 +11,7 @@
      <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-                    <a href="/admin/product_category/create" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+                    <a href="/admin/product_category/create" class="btn btn-default btn-xm"  data-toggle="tooltip" title="insert"><i class="fa fa-plus"></i></a>
               </h3>
             </div>
             <!-- /.box-header -->
@@ -39,12 +39,12 @@
                     <input data-id="{{$category->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $category->status ? 'checked' : '' }}>
                   </td>
                   <td>
-                      <a href="/admin/product_category/{{$category->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                      <a href="/admin/product_category/{{$category->id}}/edit" class="btn btn-info btn-flat btn-sm"  data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a>
                      
                       <form action="/admin/product_category/{{$category->id}}" method="post">
                         @csrf
                         @method('delete')
-                      <button class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
+                      <button onclick="return confirm('Are you sure do you want to delete');"  data-toggle="tooltip" title="trash" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
                       </form>
                     </td>
                 </tr>

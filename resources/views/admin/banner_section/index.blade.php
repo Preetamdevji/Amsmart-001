@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-  Manage Settings                       
+  Manage Banners                       
 @endsection
 @section('main-content')
 
@@ -12,7 +12,7 @@
             <div class="box-header with-border">
               
             <h3 class="box-title">     
-            <a href="banner_section/create" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+            <a href="banner_section/create" class="btn btn-default btn-xm" data-toggle="tooltip" title="insert"><i class="fa fa-plus"></i></a>
             </h3>
 
             </div>
@@ -43,7 +43,7 @@
                     <td><img src="{{asset('uploads/'.$item->slider_image)}}" height="25" width="25" class="rounded-circle"></td>
                     <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $item->status ? 'checked' : '' }}></td>
 
-                    <td><a href="/admin/banner_section/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                    <td><a href="/admin/banner_section/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a>
                     
                     <form action="{{url('/')}}/admin/banner_section/{{$item->id}}" method="post">
                       @method('DELETE')
@@ -75,12 +75,12 @@
 });
     $('.toggle-class').change(function() { 
            var status = $(this).prop('checked') == true ? 1 : 0;  
-           var brand_id = $(this).data('id');  
+           var banner_id = $(this).data('id');  
            $.ajax({ 
                type: "GET", 
                dataType: "json", 
-               url: "{{route('update_user_status')}}", 
-               data: {'status': status, 'brand_id': brand_id}, 
+               url: "{{route('update_banner_section_status')}}", 
+               data: {'status': status, 'banner_id': banner_id}, 
                success: function(data){ 
                   Swal.fire(
                     'Status Update!',
