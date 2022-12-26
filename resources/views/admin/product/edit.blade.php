@@ -52,6 +52,12 @@
                     <label for="availability">Availability<span class="text text-red">*</span></label>
                       <input type="text" name="availability" value="{{$products->availability}}" class="form-control" id="availability" placeholder="Availability">
                     </div>
+
+                    <div class="form-group @error('quantity') has-error @enderror">
+                    <label for="quantity">Quantity<span class="text text-red">*</span></label>
+                      <input type="text" name="quantity" value="{{$products->quantity}}" class="form-control" id="quantity" placeholder="Quantity">
+                    </div>
+
                   
                     <div class="form-group @error('old_price') has-error @enderror">
                   <label for="old_price">Old Price<span class="text text-red">*</span></label> 

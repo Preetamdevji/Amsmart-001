@@ -39,6 +39,9 @@ view Detail
 
  <p>{{$products->availability}}</p>
 
+ <h3>Quantity</h3>
+
+<p>{{$products->quantity}}</p>
 
  <h3>Old Price</h3>
 

@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->string('availability');
+            $table->Integer('quantity')->default(0);
             $table->string('old_price');
             $table->string('new_price');
             $table->string('color_family');
