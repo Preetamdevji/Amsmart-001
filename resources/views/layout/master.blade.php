@@ -30,7 +30,7 @@
     </form> -->
 
     <form class="search-form" action="{{ Route('search') }}" method="GET">
-    <input value="" name="search" type="search" id="search-box" placeholder="search here...">
+    <input value="{{$search}}" name="search" type="search" id="search-box" placeholder="search here...">
     <button for="search-box" class="fas fa-search"></button>	
     						
 	</form>

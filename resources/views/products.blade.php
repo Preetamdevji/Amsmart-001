@@ -29,7 +29,7 @@
     <h1 class="heading"> All <span>Products</span> </h1>
 
     <div class="box-container">
-        @forelse($AllProduct as $product)
+        @forelse($product as $product)
         <a href="/product-detail/{{$product->id}}" class="box">
             <div class="image">
                 <img src="/uploads/{{$product->product_img}}" style="width: 300px; height: 300px" class="main-img" alt="">
@@ -42,6 +42,8 @@
         </a>
 
         @empty
+
+        <div style="color:red;">No Matching Result Of Your Search Try Different Keywords</div>
         @endforelse
 
     </div>
