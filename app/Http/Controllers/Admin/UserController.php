@@ -120,6 +120,7 @@ class UserController extends Controller
 		$user->designation = $request['designation'];
 		$user->mobile = $request['mobile'];
 		$user->status = $request['status'];
+        
 
         if($request->hasfile('user_img'))
 		{
@@ -163,9 +164,9 @@ class UserController extends Controller
 
     public function updateStatus(Request $request)
     {
-        $brand = Brand::find($request->brand_id); 
-        $brand->status = $request->status; 
-        $brand->save(); 
+        $user = user::find($request->user_id); 
+        $user->status = $request->status; 
+        $user->save(); 
         return response()->json(['Success'=>'Status change successfully.']); 
     }
     

@@ -18,6 +18,7 @@
         <div class="box">
             <i class="fas fa-envelope"></i>
             <h3>email</h3>
+            <p>---</p>
             <p>amsmartsol@gmail.com</p>
         </div>
 

@@ -29,7 +29,7 @@
     <h1 class="heading"> All <span>Products</span> </h1>
 
     <div class="box-container">
-        @forelse($AllProduct as $product)
+        @forelse($Allproducts as $product)
         <a href="/product-detail/{{$product->id}}" class="box">
             <div class="image">
                 <img src="/uploads/{{$product->product_img}}" style="width: 300px; height: 300px" class="main-img" alt="">
@@ -37,7 +37,7 @@
             </div>
             <div class="content">
                 <h3>{{$product->product_name}}</h3>
-                <div class="price">${{$product->new_price}} <span>${{$product->old_price}}</span></div>
+                <div class="price">Rs:{{$product->new_price}} <span>Rs:{{$product->old_price}}</span></div>
             </div>
         </a>
 

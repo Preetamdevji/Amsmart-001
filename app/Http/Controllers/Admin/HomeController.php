@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     	if ($validator->passes()) {
     		$fileName = $user->user_img;
-    	if (request()->hasFile('user_img'))
+    	if ($request->hasFile('user_img'))
     	{
     		$file = request()->file('user_img');
     		$fileName = md5($file->getClientOriginalName()) . time() . "." . $file->getClientOriginalExtension();
@@ -40,8 +40,9 @@ class HomeController extends Controller
     	}
 		$data = $request->all();
     	$data['user_img'] = $fileName;
-    	$user->update($data);
-            return response()->json(['success'=>'Added new records.']);
+    	$user = $user->update($data);
+
+            return response()->json(['success'=>'Added new record.']);
         }
         else{
         	 return response()->json(['error'=>$validator->errors()->all()]);
