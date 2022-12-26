@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-  Add Website content                        
+  Add Banner              
 @endsection
 @section('main-content')
 

@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-view Detail                       
+ View Product Detail                       
 @endsection
 @section('main-content')
 
@@ -13,52 +13,48 @@ view Detail
             
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" style="text-align: center;">
            
                 
        
-<h1>Product</h1>
+<h1 style="font-weight: bold;">Product Image</h1>
 
-<td><img src="{{asset('uploads/'.$products->product_img)}}" width="300" height="300" class="rounded-circle"></td>
+<td><img src="{{asset('uploads/'.$products->product_img)}}" width="250" height="250" class="rounded-circle"></td>
                 
-<h3>Product Name</h3>
+<h3 style="font-weight: bold;">Product Name</h3>
 
-<p>{{$products->product_name}}</p>
+<p style="font-size: 15px; text-decoration: underline;">{{$products->product_name}}</p>
   
-<h3>Category ID</h3>
+<h3 style="font-weight: bold;">Category</h3>
 
-  <p>{{$products->category_id}}</p>
-
-
-  <h3>Brand ID</h3>
-
-  <p>{{$products->brand_id}}</p>
+  <p style="font-size: 15px; text-decoration: underline;">{{$products->LinkProductCategory->title}}</p>
 
 
-  <h3>availability</h3>
+  <h3 style="font-weight: bold;">Brand</h3>
 
- <p>{{$products->availability}}</p>
+  <p style="font-size: 15px; text-decoration: underline;">{{$products->LinkProductBrand->title}}</p>
 
 
- <h3>Old Price</h3>
+  <h3 style="font-weight: bold;">availability</h3>
 
-<p>{{$products->old_price}}</p>
+ <p style="font-size: 15px; text-decoration: underline;">{{$products->availability}}</p>
 
-<h3>New Price</h3>
 
-<p>{{$products->new_price}}</p>
+ <h3 style="font-weight: bold;">Old Price</h3>
 
-<h3>Color Family</h3>
+<p style="font-size: 15px; text-decoration: underline;">{{$products->old_price}}</p>
 
-<p>{{$products->color_family}}</p>
+<h3 style="font-weight: bold;">New Price</h3>
 
-<h3>Product Image</h3>
+<p style="font-size: 15px; text-decoration: underline;">{{$products->new_price}}</p>
 
-<p>{{$products->product_img}}</p>
+<h3 style="font-weight: bold;">Color Family</h3>
 
-<h3>Description</h3>
+<p style="font-size: 15px; text-decoration: underline;">{{$products->color_family}}</p>
 
-<p>{{$products->description}}</p>
+<h3 style="font-weight: bold;">Description</h3>
+
+<p style="font-size: 15px; text-decoration: underline;">{{$products->description}}</p>
 
 
 </div>

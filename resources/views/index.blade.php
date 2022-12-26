@@ -75,7 +75,7 @@
             </div>
             <div class="content">
                 <h3>{{$newArrival->product_name}}</h3>
-                <div class="price"> ${{$newArrival->new_price}} <span>${{$newArrival->old_price}}</span> </div>
+                <div class="price"> Rs:{{$newArrival->new_price}} <span>Rs:{{$newArrival->old_price}}</span> </div>
             </div>
         </a>
         @empty
@@ -102,7 +102,7 @@
             </div>
             <div class="content">
                 <h3>{{$Featured->product_name}}</h3>
-                <div class="price">${{$Featured->new_price}} <span>${{$Featured->old_price}}</span></div>
+                <div class="price">Rs:{{$Featured->new_price}} <span>Rs:{{$Featured->old_price}}</span></div>
             </div>
         </a>
 
