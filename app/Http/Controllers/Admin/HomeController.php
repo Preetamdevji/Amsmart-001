@@ -40,7 +40,7 @@ class HomeController extends Controller
     	}
 		$data = $request->all();
     	$data['user_img'] = $fileName;
-    	$user = $user->update($data);
+    	$user->update($data);
 
             return response()->json(['success'=>'Added new record.']);
         }

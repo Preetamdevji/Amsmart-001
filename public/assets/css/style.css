@@ -689,12 +689,13 @@ section {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 2rem;
+  justify-content: center;
 }
 
 .product-banner .box-container .box {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 42rem;
-          flex: 1 1 42rem;
+      /* -ms-flex: 1 1 42rem;
+          flex: 1 1 42rem; */
   position: relative;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
@@ -719,7 +720,7 @@ section {
 .product-banner .box-container .box .content {
   position: absolute;
   top: 50%;
-  left: 5%;
+  right: 20%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
@@ -1231,6 +1232,20 @@ section {
   .newsletter .content p {
     font-size: 1.5rem;
   }
+  .banner .box-container{
+    margin: auto;
+    max-width: 500px;
+  }
+.box-container a{
+width:100% !important;
+}
+.banner .box-container .box{
+  grid-column-start: 1;
+  height: auto;
+}
+.products .box-container .box {
+  width:100%;
+}
 }
 
 @media (max-width: 450px) {

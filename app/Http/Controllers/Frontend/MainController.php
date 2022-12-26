@@ -29,7 +29,6 @@ class MainController extends Controller
     	return view('about', compact('CmsFaq', 'CrmAbout', 'search'));
     }
 
-
     public function product(request $request)
     {
        

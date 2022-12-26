@@ -43,7 +43,7 @@
     <div class="box-container">
         @forelse($HomeBanners as $banner)
         <a href="#" class="box">
-            <img src="/uploads/{{$banner->slider_image}}" style="width: 329px; height: 246px;" alt="No Image Found">
+            <img src="/uploads/{{$banner->slider_image}}" style="width: 329p100%; height: 246px;" alt="No Image Found">
             <div class="content">
                 <span>{{$banner->top_title}}</span>
                 <h3>{{$banner->title}}</h3>
@@ -93,7 +93,7 @@
     <div class="box-container">
         @forelse($FeaturedProducts as $Featured)
         <a href="/product-detail/{{$Featured->id}}" class="box" style="position: relative">
-            <span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;position: absolute;top: 13px;left: 14px;padding: 5px;">Hot</span>
+            <span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;position: absolute;top: 13px;left: 14px;padding: 5px; z-index: 2; border:none;">Hot</span>
 
             <div class="image">
                 <img src="/uploads/{{$Featured->product_img}}" style="width: 270px; height: 300px;" class="main-img" alt="">
