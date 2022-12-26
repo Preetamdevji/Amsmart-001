@@ -159,12 +159,7 @@
                             <textarea class="form-control" name="bio" id="bio" rows="6" placeholder="Your Bio Here...">{{ Auth::user()->bio }}</textarea>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="user_img" class="col-sm-2 control-label">Image</label>
-                        <div class="col-sm-10">
-                            <input type="file" id="user_img" name="user_img" width="160" height="160">
-                        </div>
-                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>

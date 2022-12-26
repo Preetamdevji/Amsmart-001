@@ -9,7 +9,7 @@
 <section class="about">
 @forelse($CrmAbout as $about)
     <div class="image">
-        <img src="/uploads/{{$about->img}}" style="width: 520px; height: 370px;" alt="No image found">
+        <img src="/uploads/{{$about->img}}" style="width: 520px; height: 367px;" alt="No image found">
     </div>
 
     <div class="content">
