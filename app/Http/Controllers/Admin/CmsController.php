@@ -163,9 +163,9 @@ class CmsController extends Controller
 
     public function updateStatus(Request $request)
     {
-        $brand = Brand::find($request->brand_id); 
-        $brand->status = $request->status; 
-        $brand->save(); 
+        $cms = cms::find($request->cms_id); 
+        $cms->status = $request->status; 
+        $cms->save(); 
         return response()->json(['Success'=>'Status change successfully.']); 
     }
 }

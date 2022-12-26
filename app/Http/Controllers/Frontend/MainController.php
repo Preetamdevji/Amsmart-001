@@ -13,22 +13,22 @@ class MainController extends Controller
 {
     public function index()
     {
+        $search = $request['search'] ?? "";
         $FeaturedProducts = Product::where('status', 1)->where('hot_selling', 1)->get();
         $NewArrivals = Product::where('status', 1)->latest()->take(9)->get();
         $HomeBanners = Banner_Section::where('flag', 'home_banner')->where('status', 1)->get();
         $sliders = Banner_Section::where('flag', 'home_slider')->where('status', 1)->get();
-    	return view('index', compact('sliders', 'HomeBanners', 'FeaturedProducts', 'NewArrivals'));
+    	return view('index', compact('sliders', 'HomeBanners', 'FeaturedProducts', 'NewArrivals','search'));
     }
 
     public function about()
     {
+        $search = $request['search'] ?? "";
         $CrmAbout = CMS::where('status', 1)->where('flag', 'about_us')->get();
         $CmsFaq = CMS::where('status', 1)->where('flag', 'faq')->get();
-    	return view('about', compact('CmsFaq', 'CrmAbout'));
+    	return view('about', compact('CmsFaq', 'CrmAbout', 'search'));
     }
 
-
-       
 
     public function product(request $request)
     {
@@ -38,37 +38,42 @@ class MainController extends Controller
         $search = $request['search'] ?? "";
 
         if($search != ""){
-            $product = Product::where('product_name', 'LIKE', "%$search%")->get();
+            $Allproducts = Product::where('product_name', 'LIKE', "%$search%")->get();
         }
         else{
-            $product = Product::where('status', 1)->get();
+            $Allproducts = Product::where('status', 1)->get();
         }
 
         $Product_Cate = Product_Category::all();
-        $AllProduct = Product::where('status', 1)->get();
+
         $DealBanner = Banner_Section::where('flag', 'deal_banner')->where('status', 1)->get();
 
-       return view('products', compact('DealBanner', 'Product_Cate', 'AllProduct', 'product', 'search'));
+       return view('products', compact('DealBanner', 'Product_Cate','Allproducts', 'search'));
 
     }
 
     public function ProductDetail($id)
     {
+        $search = $request['search'] ?? "";
         $product = Product::find($id);
-        return view('product-detail', compact('product'));
+        return view('product-detail', compact('product', 'search'));
     }
 
     public function contact()
     {
-    	return view('contact');
+
+        $search = $request['search'] ?? "";
+    	return view('contact', compact('search'));
     }
 
     public function shopby($id){
 
-        $id = $id;
+      $search = $request['search'] ?? "";
+
+      $id = $id;
       $shopby = Product::where('category_id', $id)->get();
 
-      return view('shopbycategory', compact('shopby','id'));
+      return view('shopbycategory', compact('shopby', 'id', 'search'));
        
     }
 

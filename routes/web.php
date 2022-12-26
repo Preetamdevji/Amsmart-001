@@ -25,12 +25,15 @@ use App\Http\Controllers\Admin\BannerSectionController;
 */
 	Route::group(['prefix' => 'admin'], function() {
 		Route::get('/status/update/brand', [BrandController::class, 'updateStatus'])->name('update_brand_status');
-
+		Route::get('/status/update/product', [ProductController::class, 'updateStatus'])->name('update_product_status');
+		Route::get('/status/update/banner_section', [BannerSectionController::class, 'updateStatus'])->name('update_banner_section_status');
+		Route::get('/status/update/cms_pages', [CmsController::class, 'updateStatus'])->name('update_cms_status');
 		Route::get('/status/update/product_category', [ProductCategoryController::class, 'updateStatus'])->name('update_Product_cat_status');
+		Route::get('/status/update/user', [UserController::class, 'updateStatus'])->name('update_user_status');
+
 
 		Route::resource('dashboard', 'App\Http\Controllers\Admin\DashboardController');
 		Route::get('/dashboard',[DashboardController::class, 'dashboard']);
-		Route::get('/status/user/brand', [BrandController::class, 'updateStatus'])->name('update_user_status');
 
 
 		Route::resource('user', 'App\Http\Controllers\Admin\UserController');
@@ -57,6 +60,7 @@ Route::get('/products', [MainController::class, 'product']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/', [MainController::class, 'index']);
+
 Route::get('/search',[MainController::class, 'product'])->name('search');
 
 Route::get('/shopbycategory/{id}', [MainController::class, 'shopby']);

@@ -26,8 +26,11 @@
 <!-- login form section starts  -->
 
 <section class="login">
+    <div class="heading">
+        <h1 style="margin-top: 20px; text-decoration: underline; color: black;">AmSmart Solution</h1>
+    </div>
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" style="margin-top: 50px;">
         @csrf
         <h3>login now</h3>
         <input id="email" type="email" name="email" value="{{ old('email') }}" autocomplete="email" autofocus class="box">
@@ -37,8 +40,8 @@
             <label for="remember-me"> remember me </label>
         </div>
         <button type="submit" class="btn">login now</button>
-        <p>don't have an account?</p>
-        <a href="register.html" class="btn link">register now</a>
+        <p></p>
+        <a href="#" class=""></a>
     </form>
 
 </section>
@@ -50,13 +53,6 @@
 
 
 
-<section class="credit">
-
-    <p> created by team <span>unknown</span> | all rights reserved by 2023! </p>
-
-
-
-</section>
 
 <!-- footer section ends -->
 

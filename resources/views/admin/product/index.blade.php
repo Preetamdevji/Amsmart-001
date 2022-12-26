@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-  Edit Product                        
+  Manage Product                        
 @endsection
 @section('main-content')
 
@@ -11,12 +11,12 @@
      <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-                    <a href="/admin/product/create" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
+                    <a href="/admin/product/create" data-toggle="tooltip" title="insert" class="btn btn-default btn-xm"><i class="fa fa-plus"></i></a>
               </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="Table" class="table table-bordered">
+              <table id="Product_Table" class="table table-bordered">
                 <thead style="background-color: #F8F8F8;">
                   <tr>
                     <th><input type="checkbox" name="" id="checkAll"></th>
@@ -25,10 +25,10 @@
                     <th>Brand</th>
                     <th>Product Image</th>
                     <th>Status</th>
-                    <th>Action</th>
-                  
+                    <th>Action</th>         
                   </tr>
                 </thead>
+
                 @forelse($products as $product)
                 <tr>
                   <td><input type="checkbox" name="" id="" class="checkSingle"></td>
@@ -42,18 +42,18 @@
                             <img src="/uploads/{{ $product->product_img }}" width="30" height="30" style="position: relative;" class="img-thumbnails" alt="No image found">
                         @endif
                       </td>
-                  
+
                   <td>
                     <input data-id="{{$product->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $product->status ? 'checked' : '' }}>
                   </td>
                   <td>
-                        <a href="/admin/product/{{$product->id}}" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-eye" aria-hidden="true"></i></a>
-                      <a href="/admin/product/{{$product->id}}/edit" class="btn btn-info btn-flat btn-sm"> <i class="fa fa-edit"></i></a>
+                      <a href="/admin/product/{{$product->id}}" class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip" title="view"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+                      <a href="/admin/product/{{$product->id}}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a>
                      
                       <form action="/admin/product/{{$product->id}}" method="post">
                         @csrf
                         @method('delete')
-                      <button class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
+                      <button onclick="return confirm('Are you sure do you want to delete');" data-toggle="tooltip" title="trash" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
                       </form>
                     </td>
                 </tr>
@@ -75,16 +75,16 @@
 @push('scripts')
 <script>
     $(document).ready( function () {
-    $('#Product_catTable').DataTable();
+    $('#Product_Table').DataTable();
 });
     $('.toggle-class').change(function() { 
            var status = $(this).prop('checked') == true ? 1 : 0;    
-           var Product_cat_id = $(this).data('id');  
+           var Product_id = $(this).data('id');  
            $.ajax({ 
                type: "GET", 
                dataType: "json", 
-               url: "{{route('update_Product_cat_status')}}", 
-               data: {'status': status, 'Product_cat_id': Product_cat_id}, 
+               url: "{{route('update_product_status')}}", 
+               data: {'status': status, 'Product_id': Product_id}, 
                success: function(data){ 
                   Swal.fire(
                     'Status Update!',

@@ -25,7 +25,6 @@
         @empty
         @endforelse
 
-
         </div>
 
         <div class="swiper-button-next"></div>
@@ -76,7 +75,7 @@
             </div>
             <div class="content">
                 <h3>{{$newArrival->product_name}}</h3>
-                <div class="price"> ${{$newArrival->new_price}} <span>${{$newArrival->old_price}}</span> </div>
+                <div class="price"> Rs:{{$newArrival->new_price}} <span>Rs:{{$newArrival->old_price}}</span> </div>
             </div>
         </a>
         @empty
@@ -93,7 +92,8 @@
 
     <div class="box-container">
         @forelse($FeaturedProducts as $Featured)
-        <a href="/product-detail/{{$Featured->id}}" class="box"><span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;">Hot</span>
+        <a href="/product-detail/{{$Featured->id}}" class="box" style="position: relative">
+            <span class="box" style="background-color: red; color: white; font-weight: bold; margin-top: 15px;position: absolute;top: 13px;left: 14px;padding: 5px;">Hot</span>
 
             <div class="image">
                 <img src="/uploads/{{$Featured->product_img}}" style="width: 270px; height: 300px;" class="main-img" alt="">
@@ -102,7 +102,7 @@
             </div>
             <div class="content">
                 <h3>{{$Featured->product_name}}</h3>
-                <div class="price">${{$Featured->new_price}} <span>${{$Featured->old_price}}</span></div>
+                <div class="price">Rs:{{$Featured->new_price}} <span>Rs:{{$Featured->old_price}}</span></div>
             </div>
         </a>
 

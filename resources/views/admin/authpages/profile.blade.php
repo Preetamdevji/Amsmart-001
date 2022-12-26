@@ -135,9 +135,9 @@
               
                   {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">First Name</label>
+                        <label for="name" class="col-sm-2 control-label">FullName</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ Auth::user()->fullname }}" id="first_name" name="first_name" placeholder="First Name">
+                            <input type="text" class="form-control" value="{{ Auth::user()->fullname }}" id="fullname" name="fullname" placeholder="FullName">
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@
                     <div class="form-group">
                         <label for="user_img" class="col-sm-2 control-label">Image</label>
                         <div class="col-sm-10">
-                            <input type="file" id="user_img" name="user_img">
+                            <input type="file" id="user_img" name="user_img" width="160" height="160">
                         </div>
                     </div>
             </div>
@@ -178,7 +178,7 @@
 </div>
 @endsection
 
-<!-- @push('scripts')
+@push('scripts')
 <script type="text/javascript">
        
     $(document).ready(function() {
@@ -189,11 +189,13 @@
             var fullname = $("input[name='fullname']").val();
             var designation = $("input[name='designation']").val();
             var bio = $("textarea[name='bio']").val();
+            var email = $("input[name='email']").val();
+            var user_img = $("input[name='user_img']").val();
        
             $.ajax({
                 url: "{{ route('profile.update') }}",
                 type:'POST',
-                data: {_token:_token, fullname:fullname, designation:designation, bio:bio},
+                data: {_token:_token, fullname:fullname, designation:designation, bio:bio,email:email, user_img:user_img},
                 success: function(data) {
                     if($.isEmptyObject(data.error)){
                         location.reload();
@@ -216,4 +218,4 @@
 
 
 </script>
-@endpush -->
+@endpush

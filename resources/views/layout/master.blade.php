@@ -30,7 +30,7 @@
     </form> -->
 
     <form class="search-form" action="{{ Route('search') }}" method="GET">
-    <input value="" name="search" type="search" id="search-box" placeholder="search here...">
+    <input value="{{$search}}" name="search" type="search" id="search-box" placeholder="search here...">
     <button for="search-box" class="fas fa-search"></button>	
     						
 	</form>
@@ -52,7 +52,7 @@
 
     <div class="user">
         <img src="/assets/images/amsmart.webp" style="width: 190px; height: 190px;" alt="">
-        <h3>AMsmart Solution</h3>
+        <h3>AmSmart Solution</h3>
     </div>
 
     <nav class="navbar">

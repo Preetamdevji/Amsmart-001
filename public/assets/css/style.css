@@ -1271,4 +1271,11 @@ section {
     width: 100%;
   }
 }
+.img-one{
+  width: 400px;
+  height: 400px;
+}
+.img-one img{
+  width: 100%;
+}
 /*# sourceMappingURL=style.css.map */

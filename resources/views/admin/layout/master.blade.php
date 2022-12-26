@@ -57,7 +57,7 @@
 
                 <p>
                   {{ Auth::user()->fullname }} - {{ Auth::user()->designation }}
-                  <small>Member since Dec. 2022</small>
+                  <small>Member since Jan. 2023</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -172,30 +172,16 @@
                 </ul>
             </li>
 
-            <li class="{{ Request::is('admin/contact/create') || Request::is('admin/contact') ? 'active' : null }} treeview">
-                <a href="#">
-                    <i class="fa fa-phone"></i> <span>Contact</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/contact') ? 'active' : null }}"><a href="/admin/contact"><i class="fa fa-circle-o"></i> View Contacts </a></li>
-                </ul>
-            </li>
 
-             <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bars"></i> <span>Settings</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{{ Request::is('admin/banner_section') ? 'active' : null }}"><a href="/admin/banner_section"><i class="fa fa-circle-o"></i> Banner Section </a></li>
-                    
-                </ul>
+            <li class="treeview">
+                <a href="/admin/contact"><i class="fa fa-phone"></i> View Contacts </a>
             </li>
+                
+
+              <li class="treeview">
+                  <a href="/admin/banner_section"><i class="fa fa-bars"></i> Banner Section </a>
+              </li>
+
         </ul>
     </section>
     <!-- /.sidebar -->
@@ -224,7 +210,7 @@
 <script src="/assets/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="/assets/admin/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- <script src="/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
 <script src="/assets/admin/dist/js/app.min.js"></script>
 <script src="/assets/admin/dist/js/demo.js"></script>
 <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
