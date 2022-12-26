@@ -61,19 +61,29 @@
                     <label for="availability">Availability<span class="text text-red">*</span></label>
                       <input type="text" name="availability" value="{{old('availability')}}" class="form-control" id="availability" placeholder="Availability">
                     </div>
+
+                  <div class="col-md-4 col-sm-8">
+
+                    <div class="form-group @error('quantity') has-error @enderror">
+                  <label for="quantity">Quantity<span class="text text-red">*</span></label> 
+                  <input type="text" class="form-control" name="quantity" value="{{old('quantity')}}" id="old_price" placeholder="Quantity">
+                 </div>
+                   
+
                   </div>
 
                 <div class="col-md-4 col-sm-8">
+
                     <div class="form-group @error('old_price') has-error @enderror">
                   <label for="old_price">Old Price<span class="text text-red">*</span></label> 
-                  <input type="text" class="form-control" name="old_price" value="{{old('old_price')}}" id="old_price" placeholder="Old Price">
+                  <input type="number" class="form-control" name="old_price" value="{{old('old_price')}}" id="old_price" placeholder="Old Price">
                  </div>
                  </div>
 
                 <div class="col-md-4 col-sm-8">
                  <div class="form-group @error('new_price') has-error @enderror">
                     <label for="new_price">New Price</label>
-                    <input type="text" class="form-control" name="new_price" value="{{old('new_price')}}" id="new_price" placeholder="New Price">
+                    <input type="number" class="form-control" name="new_price" value="{{old('new_price')}}" id="new_price" placeholder="New Price">
                   </div>
                 </div>
                 </div>

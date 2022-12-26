@@ -39,6 +39,9 @@
 
  <p style="font-size: 15px; text-decoration: underline;">{{$products->availability}}</p>
 
+ <h3>Quantity</h3>
+
+<p>{{$products->quantity}}</p>
 
  <h3 style="font-weight: bold;">Old Price</h3>
 

@@ -62,7 +62,16 @@
                     <label for="availability">Availability<span class="text text-red">*</span></label>
                       <input type="text" name="availability" value="{{$products->availability}}" class="form-control" id="availability" placeholder="Availability">
                     </div>
+
+                         <div class="col-md-4 col-sm-8">
+                    <div class="form-group @error('quantity') has-error @enderror">
+                    <label for="quantity">Quantity<span class="text text-red">*</span></label>
+                      <input type="text" name="quantity" value="{{$products->quantity}}" class="form-control" id="quantity" placeholder="Quantity">
+                    </div>
+
+
                   </div>
+
                   
                   <div class="col-md-4 col-sm-8">
                     <div class="form-group @error('old_price') has-error @enderror">
