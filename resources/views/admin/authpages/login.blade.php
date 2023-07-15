@@ -40,8 +40,10 @@
             <label for="remember-me"> remember me </label>
         </div>
         <button type="submit" class="btn">login now</button>
-        <p></p>
-        <a href="#" class=""></a>
+        
+        <!-- <a href="#" class="btn btn-google btn-user btn-block">
+            <i class="fa-brands fa-google">Login With Google</i>
+        </a> -->
     </form>
 
 </section>

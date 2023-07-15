@@ -1,6 +1,6 @@
 @extends('admin/layout/master')     
 @section('page-title')
-  Manage Contacts     
+  Manage Cart     
 @endsection
 @section('main-content')
 
@@ -9,36 +9,33 @@
       
       <!-- /.row -->
      <div class="box">
-            <div class="box-header with-border">
+            <!-- <div class="box-header with-border">
               <h3 class="box-title"> 
-                    <a href="/contact" class="btn btn-default btn-xm" data-toggle="tooltip" title="insert"><i class="fa fa-plus"></i></a>
+                    <a href="/cart" class="btn btn-default btn-xm" data-toggle="tooltip" title="insert"><i class="fa fa-plus"></i></a>
               </h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="brandTable" class="table table-bordered">
+              <table id="cartTable" class="table table-bordered">
                 <thead style="background-color: #F8F8F8;">
                   <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Number</th>
-                    <th>Subject</th>
-                    <th>Message</th>
-                    <th>Manage</th>
+                    <th>User Id</th>
+                    <th>Product Id</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
-                @forelse($contacts as $key => $contact)
+                @forelse($cart as $key => $cart)
                 <tr>
-                  <td>{{$contact->id}}</td>
-                  <td>{{$contact->name}}</td>
-                  <td>{{$contact->email}}</td>
-                  <td>{{$contact->number}}</td>
-                  <td>{{$contact->subject}}</td>
-                  <td>{{$contact->message}}</td>
+                  <td>{{$cart->id}}</td>
+                  <td>{{$cart->user_id}}</td>
+                  <td>{{$cart->product_id}}</td>
+                  <td>{{$cart->quantity}}</td>
                   <td>
-                      <a href="/admin/contact/{{ $contact->id }}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a>
-                      <form action="/admin/contact/{{ $contact->id }}" method="Post">
+                      <!-- <a href="/admin/contact/{{ $contact->id }}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a> -->
+                      <form action="/admin/cart/{{ $cart->id }}" method="Post">
                       @csrf
                       @method('delete')
                       <button onclick="return confirm('Are You Sure, You Want To Delete this?')" data-toggle="tooltip" title="trash" class="btn btn-danger btn-flat btn-sm"> <i class="fa fa-trash-o"></i></button>
@@ -62,7 +59,7 @@
 @push('scripts')
 <script>
     $(document).ready( function () {
-    $('#brandTable').DataTable();
+    $('#cartTable').DataTable();
 });
     $('.toggle-class').change(function() { 
            var status = $(this).prop('checked') == true ? 1 : 0;  

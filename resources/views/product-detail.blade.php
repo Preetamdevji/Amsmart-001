@@ -52,31 +52,44 @@
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Roboto&display=swap" rel="stylesheet">
     </head>
-    <body>
+<body>
+  
 <section style="height:540px;" class="home-section">
-    <div class="container">
-
-<div class="first-section">
-
-<div class="img-one">
-        
-    <img src="/uploads/{{$product->product_img}}" style="width: 350px; height: 350px;"> 
-    </div>
+<div class="container">
+    <div class="first-section">
+        <div class="img-one">    
+        <img src="/uploads/{{$product->product_img}}" style="width: 350px; height: 350px;"> 
+        </div>
     <div class="content">
-        <h3 style="margin-top: 20px;">{{$product->product_name}}</h3>
+   
+    <form method="get" action="/cart">
+        @csrf
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
+    <h3 style="margin-top: 20px;">{{$product->product_name}}</h3>
         
-        <h5>Brand : <b>{{$product->LinkProductBrand->title}}</b></h5>
+    <h5>Brand : <b>{{$product->linkProductBrand->title}}</b></h5>
         
-        <h4 style="margin-bottom: 20px;"><b id="seventy">Rs:{{$product->new_price}} </b> <span style="text-decoration: line-through">Rs:{{$product->old_price}}</s></h4>
-        <h5 style="margin-bottom: 10px;">Color Family : <b>{{$product->color_family}}</b></h5>
-        <h5 style="margin-bottom: 10px;">Availability : <b>{{$product->availability}}</b></h5>
-        <h5 style="margin-bottom: 10px;">Category : <b>{{$product->LinkProductCategory->title}}</b></h5>
-        <!-- <h3 id="last">Product details of OPPO A16e 4+64GB Memory Mobile Phone</h3> -->
-        <!-- <ul style="list-style: none"> -->
-            <p style="font-size: 14px;">{{$product->description}}</p>
-        <!-- </ul> -->
+    <h4 style="margin-bottom: 20px;"><b id="seventy">Rs:{{$product->new_price}} </b> <span style="text-decoration: line-through">Rs:{{$product->old_price}}</s></h4>
+
+    <h5 style="margin-bottom: 10px;">Color Family : <b>{{$product->color_family}}</b></h5>
+
+    <h5 style="margin-bottom: 10px;">Availability : <b>{{$product->availability}}</b></h5>
+
+    <h5 style="margin-bottom: 10px;">Category : <b>{{$product->linkProductCategory->title}}</b></h5>
+    <!-- <h3 id="last">Product details of OPPO A16e 4+64GB Memory Mobile Phone</h3> -->
+    <!-- <ul style="list-style: none"> -->
+        <p style="font-size: 14px;">{{$product->description}}</p>
+    <!-- </ul> -->
+ 
+    <button  type = "submit" class="btn btn-warning">Add to Cart</button>
+    <a href="#" class="btn btn-warning">Buy Now</a>
+    </form>
+  
     </div>
 </div>
     </div>
 </section>
 @endsection
+
+
+

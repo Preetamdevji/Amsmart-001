@@ -4,6 +4,15 @@
 @endsection
 @section('main-content')
 
+<style> 
+.img-style{
+    width: 40px;
+    height: 40px;
+}
+</style>
+
+
+
     <!-- Main content -->
     <section class="content">
 
@@ -20,14 +29,14 @@
           <div class="row gx-1"> 
                 <div class="col-md-4 col-sm-8">
                  <div class="form-group @error('top_title') has-error @enderror">
-                    <label for="title">Top_Title<span class="text text-red">*</span></label>
+                    <label for="title">Top Title<span class="text text-red">*</span></label>
                       <input type="text" value="{{$Banner_Section->top_title}}" name="top_title" class="form-control" id="fullname" placeholder="fullname">
                     </div>
                 </div> 
               </div>
 
            
-                                <div class="row gx-1"> 
+                <div class="row gx-1"> 
                 <div class="col-md-4 col-sm-8">
                     <div class="form-group @error('title') has-error @enderror">
                     <label for="slug">Title <span class="text text-red">*</span></label>
@@ -66,16 +75,15 @@
                  <div class="row gx-1"> 
                 <div class="col-md-4 col-sm-8">
                     <div class="form-group">
-                      <label for="book_img">slider Image</label>
+                      <label for="book_img">Slider Image</label>
                       <input type="file" class="form-control" name="slider_image" id="slider_image" >
                       <small class="label label-warning">Cover Photo will be uploaded</small>
                     </div>
                 </div> 
               </div>
-
-                    
-       
-
+              @if($Banner_Section->slider_image)
+               <img src="{{ asset('uploads/' . $Banner_Section->slider_image) }}" class="img-style" alt="Image 4">
+              @endif
                   
               <div class="row gx-1">
                 <div class="col-lg-4">

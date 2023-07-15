@@ -4,6 +4,14 @@
 @endsection
 @section('main-content')
 
+<style> 
+.img-style{
+    width: 40px;
+    height: 40px;
+}
+</style>
+
+
     <!-- Main content -->
     <section class="content">
 
@@ -65,6 +73,9 @@
                       <small class="label label-warning">Section Image will be uploaded</small>
                    </div>   
                 </div>
+                @if($cms->img)
+               <img src="{{ asset('uploads/' . $cms->img) }}" class="img-style" alt="Image 4">
+              @endif
               </div>
 
 

@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $Product_category = Product_Category::get();
+        $Product_category = Product_Category::latest()->get();
         return view('admin/product_category/index',compact('Product_category'));
     }
 

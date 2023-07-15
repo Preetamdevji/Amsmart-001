@@ -16,7 +16,7 @@ class CmsController extends Controller
      */
     public function index()
     {
-        $cms = cms::all();
+        $cms = cms::latest()->get();
 		$data = compact('cms');
 
         return view('admin/cms_pages/index')->with($data);

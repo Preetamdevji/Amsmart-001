@@ -4,6 +4,13 @@
 @endsection
 @section('main-content')
 
+<style> 
+.img-style{
+    width: 40px;
+    height: 40px;
+}
+</style>
+
     <!-- Main content -->
     <section class="content">
 
@@ -56,24 +63,23 @@
                 </div>
               </div>
 
-                <div class="row gx-3"> 
-                  <div class="col-md-4 col-sm-8">
+                <div class="row gx-4"> 
+                  <div class="col-md-3 col-sm-8">
                     <div class="form-group @error('availability') has-error @enderror">
                     <label for="availability">Availability<span class="text text-red">*</span></label>
                       <input type="text" name="availability" value="{{$products->availability}}" class="form-control" id="availability" placeholder="Availability">
                     </div>
+                </div>
 
-                         <div class="col-md-4 col-sm-8">
+                         <div class="col-md-3 col-sm-8">
                     <div class="form-group @error('quantity') has-error @enderror">
                     <label for="quantity">Quantity<span class="text text-red">*</span></label>
                       <input type="text" name="quantity" value="{{$products->quantity}}" class="form-control" id="quantity" placeholder="Quantity">
                     </div>
-
-
                   </div>
 
                   
-                  <div class="col-md-4 col-sm-8">
+                  <div class="col-md-3 col-sm-8">
                     <div class="form-group @error('old_price') has-error @enderror">
                   <label for="old_price">Old Price<span class="text text-red">*</span></label> 
                   <input type="text" class="form-control" name="old_price" value="{{$products->old_price}}" id="old_price" placeholder="Old Price">
@@ -81,7 +87,7 @@
               </div>
                  
 
-                <div class="col-md-4 col-sm-8">
+                <div class="col-md-3 col-sm-8">
                  <div class="form-group @error('new_price') has-error @enderror">
                     <label for="new_price">New Price</label>
                     <input type="text" class="form-control" name="new_price" value="{{$products->new_price}}" id="new_price" placeholder="New Price">
@@ -103,6 +109,9 @@
                       <input type="file" class="form-control" name="product_img" id="product_img" value="{{$products->product_img}}">
                       <small class="label label-warning">Cover Photo will be uploaded</small>
                     </div>
+                    @if($products->product_img)
+               <img src="{{ asset('uploads/' . $products->product_img) }}" class="img-style" alt="Image 4">
+              @endif
                   </div>
 
                   <div class="col-md-4 col-sm-8">

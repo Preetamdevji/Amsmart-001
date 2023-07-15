@@ -19,7 +19,7 @@
               <table id="brandTable" class="table table-bordered">
                 <thead style="background-color: #F8F8F8;">
                   <tr>
-                    <th><input type="checkbox" name="" id="checkAll"></th>
+                    <th scope="row">ID</th>
                     <th>Title</th>
                     <th>Slug</th>
                     <th>Description</th>
@@ -28,9 +28,10 @@
                   
                   </tr>
                 </thead>
-                @forelse($brands as $brand)
+                @forelse($brands as $key => $brand)
                 <tr>
-                  <td><input type="checkbox" name="" id="" class="checkSingle"></td>
+                  
+                  <td>{{$brand->id}}</td>
                   <td>{{$brand->title}}</td>
                   <td>{{$brand->slug}}</td>
                   <td>{{$brand->description}}</td>

@@ -15,7 +15,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::get();
+        $brands = Brand::latest()->get();
         return view('admin/brand/index', compact('brands'));
     }
 
@@ -39,17 +39,11 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-       
-  
        $this->validate($request, [
         'title' => 'required',
         'slug' => 'required'
-
        ]);
-       
-       
-        Brand::create([
-          
+        Brand::create([      
             'title' => request()->get('title'),
             'slug' => request()->get('slug'),
             'description' => request()->get('description'),

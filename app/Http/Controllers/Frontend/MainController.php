@@ -8,6 +8,11 @@ use App\Models\Banner_Section;
 use App\models\Product_Category;
 use App\Models\Product;
 use App\Models\CMS;
+use App\Models\CartItem;
+use App\Models\User_Login;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class MainController extends Controller
 {
@@ -76,5 +81,66 @@ class MainController extends Controller
        
     }
 
+    public function addToCart(Request $request)
+{
+    $search = $request->input('search', '');
 
+    if (Auth::check()) {
+        $cart = CartItem::where('user_id', Auth::id())->get();
+        // dd($cart);
+        return view('cart', compact('cart', 'search'));
+    } else {
+        return redirect('/login');
+    }
+
+    $productId = $request->input('product_id');
+    $quantity = $request->input('quantity');
+
+    if (!$productId) {
+        return redirect()->back()->with('error', 'Product ID is missing.');
+    }
+
+    // Check if the product is already in the cart for the current user
+    $cartItem = CartItem::where('user_id', Auth::id())
+        ->where('product_id', $productId)
+        ->first();
+
+    if ($cartItem) {
+        // Update the quantity if the product is already in the cart
+        $cartItem->quantity += $quantity;
+        $cartItem->save();
+    } else {
+        // Create a new cart item if the product is not in the cart
+        CartItem::create([
+            'user_id' => Auth::id(),
+            'product_id' => $productId,
+            'quantity' => $quantity
+        ]);
+    }
+
+    $cart = CartItem::with('linkProduct')->latest()->get();
+    return view('cart', compact('cart', 'search'))->with('success', 'Product added to cart!');
+}
+
+
+    public function delete($id){
+    $cartItem = CartItem::find($id);
+    dd($cartItem);
+    if (!$cartItem) {
+        return redirect()->back()->with('error', 'Item not found.');
+    }
+    $cartItem->delete();
+    return redirect()->back()->with('success', 'Item deleted successfully');
+    }
+
+
+
+    // public function delete($id)
+    // {
+    //     $cartItem = CartItem::find($id);
+    //     dd($cartItem);
+    //     $cartItem->delete();
+    //     return redirect()->back()->with('success', 'Item deleted successfully');
+    // }
+     
 }

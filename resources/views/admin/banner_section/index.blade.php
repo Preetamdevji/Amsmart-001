@@ -21,29 +21,32 @@
               <table id="usertable" class="table table-bordered">
                 <thead style="background-color: #F8F8F8;">
                   <tr>
-                  <th width="4%"><input type="checkbox" name="" id="checkAll"></th>
-                    <th width="25%">top_title</th>
-                    <th width="15%">title</th>
-                    <th width="20%">flag</th>
+                  <th scope="row">ID</th>
+                    <th width="25%">Top Title</th>
+                    <th width="15%">Title</th>
+                    <th width="20%">Flag</th>
                     <th width="20%">Banner Image</th>
                     <th width="10%">Status</th>
                     <th width="10%">Action</th>
-
-              </tr>
+                </tr>
                 </thead>
 
-                    @foreach($Banner_Section as $item)
+                    @foreach($Banner_Section as $key => $item)
 
-                    <td><input type="checkbox" name="" id="" class="checkSingle"></td>
-
+                    <td>{{$item->id}}</td>
                     <td>{{$item->top_title}}</td>
                     <td>{{$item->title}}</td>
                     <td>{{$item->flag}}</td>
 
                     <td><img src="{{asset('uploads/'.$item->slider_image)}}" height="25" width="25" class="rounded-circle"></td>
-                    <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $item->status ? 'checked' : '' }}></td>
 
-                    <td><a href="/admin/banner_section/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="edit"> <i class="fa fa-edit"></i></a>
+                    <td>
+                      <input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="info" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Deactive" {{ $item->status ? 'checked' : '' }}>
+                  </td>
+
+                    <td>
+                      <a href="/admin/banner_section/{{$item->id}}/edit" class="btn btn-info btn-flat btn-sm" data-toggle="tooltip" title="Edit"> <i class="fa fa-edit"></i>
+                    </a>
                     
                     <form action="{{url('/')}}/admin/banner_section/{{$item->id}}" method="post">
                       @method('DELETE')

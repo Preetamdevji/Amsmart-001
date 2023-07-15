@@ -18,7 +18,7 @@ class BannerSectionController extends Controller
      */
     public function index()
     {
-        $Banner_Section = Banner_Section::all();
+        $Banner_Section = Banner_Section::latest()->get();
 		$data = compact('Banner_Section');
         return view('admin/banner_section/index')->with($data);
     }

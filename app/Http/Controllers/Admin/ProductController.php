@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('LinkProductCategory')->with('LinkProductBrand')->get();
+        $products = Product::with('LinkProductCategory')->with('LinkProductBrand')->latest()->get();
         return view('admin/product/index',compact('products'));
     }
 

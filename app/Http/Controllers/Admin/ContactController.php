@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::get();
+        $contacts = Contact::latest()->get();
         return view('admin/contact/index', compact('contacts'));
     }
 

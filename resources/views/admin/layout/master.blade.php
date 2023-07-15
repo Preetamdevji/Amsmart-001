@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/assets/admin/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -143,6 +145,19 @@
                 <ul class="treeview-menu">
                     <li class="{{ Request::is('admin/product_category/create') ? 'active' : null }}"><a href="/admin/product_category/create"><i class="fa fa-circle-o"></i> Add Product Category </a></li>
                     <li class="{{ Request::is('admin/product_category') ? 'active' : null }}"><a href="/admin/product_category"><i class="fa fa-circle-o"></i> View Product Category </a></li>
+                </ul>
+            </li>
+
+            <li class="{{ Request::is('admin/cart/create') || Request::is('admin/cart') ? 'active' : null }} treeview">
+                <a href="#">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                   
+                <li class="{{ Request::is('admin/cart') ? 'active' : null }}"><a href="/admin/cart"><i class="fa fa-circle-o"></i> View Cart</a></li>
                 </ul>
             </li>
 

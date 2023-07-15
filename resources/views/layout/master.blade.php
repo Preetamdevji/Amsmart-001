@@ -12,9 +12,13 @@
     <!-- swiper css link  -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    <!-- cusom css file link  -->
+    <!-- custom css file link  -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     
 </head>
 <body>
     
@@ -22,7 +26,8 @@
 
 <header class="header">
 
-    <a href="/" class="logo"> <i class="fas fa-store"></i> AmSmart </a>
+    <a href="/home" class="logo"> <i class="fas fa-store"></i> AmSmart </a>
+    
 
     <!-- <form action="" class="search-form">
         <input type="search" id="search-box" placeholder="search here...">
@@ -56,13 +61,14 @@
     </div>
 
     <nav class="navbar">
-        <a href="/"> <i class="fas fa-angle-right"></i> Home </a>
+        <a href="/home"> <i class="fas fa-angle-right"></i> Home </a>
         <a href="/about"> <i class="fas fa-angle-right"></i> About </a>
         <a href="/products"> <i class="fas fa-angle-right"></i> Products </a>
         <a href="/contact"> <i class="fas fa-angle-right"></i> Contact </a>
-        <!-- <a href="login"> <i class="fas fa-angle-right"></i> login </a>
-        <a href="register"> <i class="fas fa-angle-right"></i> register </a>
-        <a href="cart"> <i class="fas fa-angle-right"></i> cart </a> -->
+    
+    
+        <!-- <a href="#"> <i class="fas fa-angle-right"></i> register </a> -->
+        <!-- <a href="#"> <i class="fas fa-angle-right"></i> cart </a> -->
     </nav>
 
 </div>
@@ -110,6 +116,16 @@
 
 <!-- custom js file link  -->
 <script src="/assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+
+
+   
 </body>
 </html>
+
+

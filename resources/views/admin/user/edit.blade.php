@@ -4,6 +4,14 @@
 @endsection
 @section('main-content')
 
+<style> 
+.img-style{
+    width: 40px;
+    height: 40px;
+}
+</style>
+
+
     <!-- Main content -->
     <section class="content">
 
@@ -51,6 +59,9 @@
                         <small class="label label-warning">Cover Photo will be uploaded</small>
                       </div>
                     </div>
+                    @if($user->user_img)
+                  <img src="{{ asset('uploads/' . $user->user_img) }}" class="img-style" alt="Image 4">
+                  @endif
                   </div>
 
                     

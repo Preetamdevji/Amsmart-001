@@ -8,9 +8,15 @@ use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Frontend\MainController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\BannerSectionController;
+use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Frontend\MainController;
+
+
+
+
+
 
 
 /*
@@ -24,18 +30,26 @@ use App\Http\Controllers\Admin\BannerSectionController;
 |
 */
 	Route::group(['prefix' => 'admin'], function() {
+
+		//Admin Update Routes
+
 		Route::get('/status/update/brand', [BrandController::class, 'updateStatus'])->name('update_brand_status');
+
 		Route::get('/status/update/product', [ProductController::class, 'updateStatus'])->name('update_product_status');
+
 		Route::get('/status/update/banner_section', [BannerSectionController::class, 'updateStatus'])->name('update_banner_section_status');
+
 		Route::get('/status/update/cms_pages', [CmsController::class, 'updateStatus'])->name('update_cms_status');
+
 		Route::get('/status/update/product_category', [ProductCategoryController::class, 'updateStatus'])->name('update_Product_cat_status');
+
 		Route::get('/status/update/user', [UserController::class, 'updateStatus'])->name('update_user_status');
 
-
+		//Admin Dashboard Routes
 		Route::resource('dashboard', 'App\Http\Controllers\Admin\DashboardController');
 		Route::get('/dashboard',[DashboardController::class, 'dashboard']);
 
-
+		//Admin Routes
 		Route::resource('user', 'App\Http\Controllers\Admin\UserController');
 		Route::resource('product', 'App\Http\Controllers\Admin\ProductController');
 		Route::resource('brand', 'App\Http\Controllers\Admin\BrandController');
@@ -43,6 +57,8 @@ use App\Http\Controllers\Admin\BannerSectionController;
 		Route::resource('contact', 'App\Http\Controllers\Admin\ContactController');
 		Route::resource('cms_pages', 'App\Http\Controllers\Admin\CMSController');
 		Route::resource('banner_section', 'App\Http\Controllers\Admin\BannerSectionController');
+		Route::resource('cart',
+		'App\Http\Controllers\Admin\CartController');
 
 
 
@@ -59,16 +75,20 @@ Route::get('/product-detail/{id}', [MainController::class, 'ProductDetail']);
 Route::get('/products', [MainController::class, 'product']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
-Route::get('/', [MainController::class, 'index']);
+// Route::get('/', [MainController::class, 'addToCart']);
+Route::get('/cart', [MainController::class, 'addToCart'])->name('addToCart');
+
+
+// Route::post('/login', [MainController::class, 'login']);
+
 
 Route::get('/search',[MainController::class, 'product'])->name('search');
-
 Route::get('/shopbycategory/{id}', [MainController::class, 'shopby']);
-
-
 
 Auth::routes();
 
+Route::get('/home',[MainController::class, 'index'])->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::delete('/cart/{id}', [MainController::class, 'delete'])->name('cart.delete');
+
 
