@@ -125,7 +125,7 @@ class MainController extends Controller
 
     public function delete($id){
     $cartItem = CartItem::find($id);
-    dd($cartItem);
+    // dd($cartItem);
     if (!$cartItem) {
         return redirect()->back()->with('error', 'Item not found.');
     }

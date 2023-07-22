@@ -36,7 +36,7 @@ height: 100vh !important;
                         class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
                   </div>
                 </div> -->
-                @foreach($cart as $cartItem) 
+  @foreach($cart as $cartItem) 
   <div class="card mb-3">
     <div class="card-body">
       <div class="d-flex justify-content-between">
