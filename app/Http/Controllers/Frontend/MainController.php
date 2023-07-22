@@ -85,13 +85,13 @@ class MainController extends Controller
 {
     $search = $request->input('search', '');
 
-    if (Auth::check()) {
-        $cart = CartItem::where('user_id', Auth::id())->get();
-        // dd($cart);
-        return view('cart', compact('cart', 'search'));
-    } else {
-        return redirect('/login');
-    }
+    // if (Auth::check()) {
+    //     $cart = CartItem::where('user_id', Auth::id())->get();
+    //     // dd($cart);
+    //     return view('cart', compact('cart', 'search'));
+    // } else {
+    //     return redirect('/login');
+    // }
 
     $productId = $request->input('product_id');
     $quantity = $request->input('quantity');
@@ -105,11 +105,13 @@ class MainController extends Controller
         ->where('product_id', $productId)
         ->first();
 
-    if ($cartItem) {
-        // Update the quantity if the product is already in the cart
-        $cartItem->quantity += $quantity;
-        $cartItem->save();
-    } else {
+    // if ($cartItem) {
+    //     // Update the quantity if the product is already in the cart
+    //     $cartItem->quantity += $quantity;
+    //     $cartItem->save();
+    // } 
+    else
+    {
         // Create a new cart item if the product is not in the cart
         CartItem::create([
             'user_id' => Auth::id(),
