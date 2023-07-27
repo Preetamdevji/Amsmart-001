@@ -83,6 +83,12 @@
  
     <button  type = "submit" class="btn btn-warning">Add to Cart</button>
     <a href="#" class="btn btn-warning">Buy Now</a>
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{session('message')}}
+        </div>
+    @endif
     </form>
   
     </div>

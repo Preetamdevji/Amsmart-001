@@ -29,6 +29,10 @@ use App\Http\Controllers\Frontend\MainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 	Route::group(['prefix' => 'admin'], function() {
 
 		//Admin Update Routes
@@ -77,6 +81,21 @@ Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 // Route::get('/', [MainController::class, 'addToCart']);
 Route::get('/cart', [MainController::class, 'addToCart'])->name('addToCart');
+
+
+// Sign In
+Route::get('/sign_in', [MainController::class, 'signin_index'])->name('sign_in');
+Route::post('/signin_post', [MainController::class, 'signin_post'])->name('sign_in');
+
+// Sign Up
+Route::get('/sign_up', [MainController::class, 'signup_index'])->name('sign_up');
+Route::Post('/signup_post', [MainController::class, 'signup_post'])->name('sign_up');
+
+// logout
+Route::get('/logout',[MainController::class,'logout'])->name('logout');
+
+
+
 
 
 // Route::post('/login', [MainController::class, 'login']);

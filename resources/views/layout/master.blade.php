@@ -67,7 +67,8 @@
         <a href="/contact"> <i class="fas fa-angle-right"></i> Contact </a>
     
     
-        <!-- <a href="#"> <i class="fas fa-angle-right"></i> register </a> -->
+        <a href="/sign_in"> <i class="fas fa-angle-right"></i> Login </a>
+        <a href="/sign_up"> <i class="fas fa-angle-right"></i> Registration </a>
         <!-- <a href="#"> <i class="fas fa-angle-right"></i> cart </a> -->
     </nav>
 

@@ -10,7 +10,10 @@ use App\Models\Product;
 use App\Models\CMS;
 use App\Models\CartItem;
 use App\Models\User_Login;
+use App\Models\Sign_In;
+use App\Models\Sign_Up;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -105,15 +108,19 @@ class MainController extends Controller
         ->where('product_id', $productId)
         ->first();
 
+    if ($cartItem){    
+    return redirect()->back()->with('message','Your Product is already added to the cart');
+    }
     // if ($cartItem) {
     //     // Update the quantity if the product is already in the cart
     //     $cartItem->quantity += $quantity;
     //     $cartItem->save();
     // } 
-    else
+   else
     {
         // Create a new cart item if the product is not in the cart
-        CartItem::create([
+    
+        $cartItem = CartItem::create([
             'user_id' => Auth::id(),
             'product_id' => $productId,
             'quantity' => $quantity
@@ -145,4 +152,73 @@ class MainController extends Controller
     //     return redirect()->back()->with('success', 'Item deleted successfully');
     // }
      
+
+    public function signin_index(Request $request)
+    {
+        $search = $request->input('search', '');
+        return view ('/sign_in',compact('search'));    
+
+    }
+
+    public function signin_post(Request $request)
+    {
+        $signInData = Sign_In::get(); 
+
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);    
+
+        $credential = $request->only('email','password');
+        if(Auth::attempt($credential)){
+            return redirect()->intended(route('home'));
+        }
+        return redirect()->route('sign_in')->with('error', 'Sign In details are not valid');
+
+    }
+  
+    public function signup_index(Request $request)
+    {
+     
+      $search = $request->input('search', '');
+      return view('/sign_up',compact('search'));   
+    }
+
+    public function signup_post(Request $request)
+
+    {
+        $signUpData = Sign_Up::get();
+
+        $request->validate([
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'mobile' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'address' => 'required'
+    ]);
+
+        $data['name'] = $request->name;
+        $data['last_name'] = $request->last_name;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password);
+        $data['mobile'] = $request->mobile;
+        $data['country'] = $request->country;
+        $data['city'] = $request->city;
+        $data['address'] = $request->address;
+        $user = Sign_Up::create($data);
+        if (!$user){
+            return redirect()->route('sign_up')->with('error', 'Sign Up Failed! Try Again');
+        }
+        return redirect()->route('home')->with('success', 'Sign Up Successfully');
+    }
+
+        public function logout()
+        {
+            Session::flush();
+            Auth::logout();  
+            return redirect()->route('sign_in');  
+        }
 }
