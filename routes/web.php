@@ -85,7 +85,7 @@ Route::get('/cart', [MainController::class, 'addToCart'])->name('addToCart');
 
 // Sign In
 Route::get('/sign_in', [MainController::class, 'signin_index'])->name('sign_in');
-Route::post('/signin_post', [MainController::class, 'signin_post'])->name('sign_in');
+Route::get('/signin_post', [MainController::class, 'frontend_login'])->name('sign_in');
 
 // Sign Up
 Route::get('/sign_up', [MainController::class, 'signup_index'])->name('sign_up');

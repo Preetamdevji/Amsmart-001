@@ -5,7 +5,25 @@
 @section('main-content')
 
 <section>
-<form class="container" action="{{route('sign_in')}}" method= "Post" enctype="multipart/form-data">
+<div class="mt-5">
+    @if($errors->any())
+        <div class="col-12">
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger">{{$error}}</div>
+            @endforeach
+        </div>
+    @endif
+
+  @if(session()->has('error'))
+  <div class="alert alert-danger">{{session('error')}}</div>
+  @endif
+  
+  @if(session()->has('success'))
+  <div class="alert alert-success">{{session('success')}}</div>
+  @endif
+  </div>
+<form class="container" action="{{route('sign_in')}}" method="GET" enctype="multipart/form-data">
+
 @csrf
   <div class="mb-12">
     <label for="email" class="form-label">Email address</label>
@@ -15,7 +33,7 @@
   </div>
   <div class="mb-12">
     <label for="password" class="form-label">Password</label>
-    <input type="text" class="form-control" name="password" id="password">
+    <input type="password" class="form-control" name="password" id="password">
   </div>
   <!-- <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">

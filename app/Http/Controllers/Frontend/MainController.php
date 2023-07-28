@@ -11,7 +11,8 @@ use App\Models\CMS;
 use App\Models\CartItem;
 use App\Models\User_Login;
 use App\Models\Sign_In;
-use App\Models\Sign_Up;
+use App\Models\Sign_up;
+use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -160,9 +161,13 @@ class MainController extends Controller
 
     }
 
-    public function signin_post(Request $request)
+    public function frontend_login(Request $request)
     {
-        $signInData = Sign_In::get(); 
+        // Assuming "Sign_Up" and "Sign_In" models and their relationship methods are defined correctly
+
+        // $signUp = Sign_up::find(1);
+        // $signInData = $signUp->signIn;
+        // dd($signUp);
 
         $request->validate([
             'email' => 'required',
@@ -175,6 +180,8 @@ class MainController extends Controller
         }
         return redirect()->route('sign_in')->with('error', 'Sign In details are not valid');
 
+
+        
     }
   
     public function signup_index(Request $request)
@@ -187,7 +194,6 @@ class MainController extends Controller
     public function signup_post(Request $request)
 
     {
-        $signUpData = Sign_Up::get();
 
         $request->validate([
             'name' => 'required',
@@ -208,7 +214,7 @@ class MainController extends Controller
         $data['country'] = $request->country;
         $data['city'] = $request->city;
         $data['address'] = $request->address;
-        $user = Sign_Up::create($data);
+        $user = Sign_up::create($data);
         if (!$user){
             return redirect()->route('sign_up')->with('error', 'Sign Up Failed! Try Again');
         }

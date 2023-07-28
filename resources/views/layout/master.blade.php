@@ -66,9 +66,12 @@
         <a href="/products"> <i class="fas fa-angle-right"></i> Products </a>
         <a href="/contact"> <i class="fas fa-angle-right"></i> Contact </a>
     
-    
+        @auth
+        <a href="/logout"> <i class="fas fa-angle-right"></i> Logout </a>
+        @else
         <a href="/sign_in"> <i class="fas fa-angle-right"></i> Login </a>
         <a href="/sign_up"> <i class="fas fa-angle-right"></i> Registration </a>
+        @endauth
         <!-- <a href="#"> <i class="fas fa-angle-right"></i> cart </a> -->
     </nav>
 

@@ -18,6 +18,7 @@ return [
         'passwords' => 'users',
     ],
 
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -42,6 +43,11 @@ return [
         ],
     ],
 
+    // 'frontend' => [
+    //     'driver' => 'session',
+    //     'provider' => 'sign_up_users', // Use a custom "sign_up_users" provider for the frontend
+    // ],
+
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -59,16 +65,23 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+    // 'providers' => [
+    //     'users' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\Models\User::class,
+    //     ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'providers' => [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => App\Models\Sign_Up::class, // Use the Sign_Up model for authentication
+            ]
+      
     ],
 
     /*
@@ -109,3 +122,4 @@ return [
     'password_timeout' => 10800,
 
 ];
+

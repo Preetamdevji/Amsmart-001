@@ -12,4 +12,10 @@ class Sign_In extends Model
     protected $fillable = [
         'email','password'
     ];
+
+    // Define a one-to-one relationship with the Sign_up model
+    public function signUp()
+    {
+        return $this->belongsTo(Sign_up::class,'email','email');
+    }
 }
