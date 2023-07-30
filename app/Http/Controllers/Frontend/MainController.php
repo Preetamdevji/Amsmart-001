@@ -89,13 +89,13 @@ class MainController extends Controller
 {
     $search = $request->input('search', '');
 
-    // if (Auth::check()) {
-    //     $cart = CartItem::where('user_id', Auth::id())->get();
-    //     // dd($cart);
-    //     return view('cart', compact('cart', 'search'));
-    // } else {
-    //     return redirect('/login');
-    // }
+    if (Auth::guard('buyer')->check()) {
+        $cart = CartItem::where('user_id', Auth::id())->get();
+        // dd($cart);
+        return view('cart', compact('cart', 'search'));
+    } else {
+        return redirect('/sign_in');
+    }
 
     $productId = $request->input('product_id');
     $quantity = $request->input('quantity');
@@ -157,6 +157,9 @@ class MainController extends Controller
     public function signin_index(Request $request)
     {
         $search = $request->input('search', '');
+        if (Auth::guard('buyer')->check()){
+            return redirect()->route('home');
+          }
         return view ('/sign_in',compact('search'));    
 
     }
@@ -175,13 +178,12 @@ class MainController extends Controller
         ]);    
 
         $credential = $request->only('email','password');
-        if(Auth::attempt($credential)){
+        if(Auth::guard('buyer')->attempt($credential)){
             return redirect()->intended(route('home'));
         }
-        return redirect()->route('sign_in')->with('error', 'Sign In details are not valid');
-
-
         
+        return redirect()->route('sign_in')->with('error', 'Sign In details are not valid');
+    
     }
   
     public function signup_index(Request $request)
@@ -221,10 +223,11 @@ class MainController extends Controller
         return redirect()->route('home')->with('success', 'Sign Up Successfully');
     }
 
+        // Function to handle logout
         public function logout()
         {
-            Session::flush();
-            Auth::logout();  
-            return redirect()->route('sign_in');  
-        }
+        // Logout the user from the 'buyer' guard
+        Auth::guard('buyer')->logout();
+        return redirect()->route('sign_in'); // Redirect to the login page after logout
+    }
 }

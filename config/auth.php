@@ -13,6 +13,7 @@ return [
     |
     */
 
+    
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
@@ -41,13 +42,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+    
+    'buyer' => [
+        'driver' => 'session',
+        'provider' => 'buyers', 
     ],
-
-    // 'frontend' => [
-    //     'driver' => 'session',
-    //     'provider' => 'sign_up_users', // Use a custom "sign_up_users" provider for the frontend
-    // ],
-
+],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -65,24 +65,17 @@ return [
     |
     */
 
-    // 'providers' => [
-    //     'users' => [
-    //         'driver' => 'eloquent',
-    //         'model' => App\Models\User::class,
-    //     ],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-
-        'providers' => [
-            'users' => [
+            'buyers' => [
                 'driver' => 'eloquent',
-                'model' => App\Models\Sign_Up::class, // Use the Sign_Up model for authentication
-            ]
-      
-    ],
+                'model' => App\Models\Sign_up::class,
+            ],    
+        ],
 
     /*
     |--------------------------------------------------------------------------
@@ -106,6 +99,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'buyers' => [
+            'provider' => 'buyers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*
@@ -122,4 +122,6 @@ return [
     'password_timeout' => 10800,
 
 ];
+
+
 
